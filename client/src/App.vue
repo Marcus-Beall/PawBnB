@@ -1,17 +1,16 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-    </div>
-    <router-view />
-    <feet></feet>
+  <div id="app" class="container-fluid">
+    <navi class="row"></navi>
+    <feet class="row"></feet>
   </div>
 </template>
 
 <script>
+  import navi from '@/components/Nav.vue'
   import feet from '@/components/Feet.vue'
   export default {
     components: {
+      navi,
       feet
     }
   }
@@ -19,24 +18,5 @@
 </script>
 
 <style>
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-  }
 
-  #nav {
-    padding: 30px;
-  }
-
-  #nav a {
-    font-weight: bold;
-    color: #2c3e50;
-  }
-
-  #nav a.router-link-exact-active {
-    color: #42b983;
-  }
 </style>

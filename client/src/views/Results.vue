@@ -12,7 +12,11 @@
 
       }
     },
-    computed: {},
+    computed: {
+      result() {
+        return this.$store.state.results
+      }
+    },
     methods: {}
   }
 

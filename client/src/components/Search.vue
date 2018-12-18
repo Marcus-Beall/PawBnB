@@ -38,7 +38,7 @@
     computed: {},
     methods: {
       search() {
-        this.$store.dispatch('search', this.query)
+        this.$store.dispatch('searchHosts', this.query)
       }
     }
   }

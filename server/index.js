@@ -29,6 +29,11 @@ server.use(auth.session)
 server.use(auth.router)
 
 
+let userRoutes = require('./assets/router/users')
+server.use('/api/users', userRoutes)
+let hostRoutes = require('./assets/router/hosts')
+server.use('/api/hosts', hostRoutes)
+
 server.use((req, res, next) => {
   if (!req.session.uid) {
     return res.status(401).send({
@@ -37,11 +42,6 @@ server.use((req, res, next) => {
   }
   next()
 })
-
-let userRoutes = require('./assets/router/users')
-server.use('/api/users', userRoutes)
-let hostRoutes = require('./assets/router/hosts')
-server.use('/api/hosts', hostRoutes)
 
 server.use('*', (req, res, next) => {
   res.status(404).send({

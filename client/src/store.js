@@ -58,6 +58,7 @@ export default new Vuex.Store({
         .then(res => {
           let results = res.data
           commit('searchResults', results)
+          router.push({ name: 'results' })
         })
     },
     searchUsers({ commit, dispatch }, query) {

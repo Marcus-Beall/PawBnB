@@ -4,8 +4,19 @@
       <router-link to="/">Home</router-link> |
     </div>
     <router-view />
+    <feet></feet>
   </div>
 </template>
+
+<script>
+  import feet from '@/components/Feet.vue'
+  export default {
+    components: {
+      feet
+    }
+  }
+
+</script>
 
 <style>
   #app {

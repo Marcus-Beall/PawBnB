@@ -25,7 +25,7 @@
 
 <script>
   export default {
-    name: '',
+    name: 'search',
     data() {
       return {
         query: {

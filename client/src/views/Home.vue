@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid">
     <div class="home">
-      <div class="row box">
-
+      <div class="row box d-flex justify-content-center">
+        <h1>P<i class="fas fa-paw" />wBnB</h1>
       </div>
       <search></search>
     </div>
@@ -32,5 +32,9 @@
 
   .box {
     height: 18vh;
+  }
+
+  h1 {
+    margin-top: 50px;
   }
 </style>

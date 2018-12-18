@@ -1,11 +1,16 @@
 <template>
   <div class="navi">
-    <i class="fas fa-home"></i>
-    <button>Home</button>
-    <h1>PawBnB</h1>
-    <button>Help</button>
-    <button>Login</button>
-    <button>Host a Dog</button>
+    <div class="col-4 d-flex justify-content-start">
+      <i class="fas fa-home"></i>
+    </div>
+    <div class="col-4 d-flex justify-content-center">
+      <h1>PawBnB</h1>
+    </div>
+    <div class="col-4 d-flex justify-content-end">
+      <button>Help</button>
+      <button>Login</button>
+      <button>Host a Dog</button>
+    </div>
   </div>
 </template>
 

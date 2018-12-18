@@ -3,7 +3,7 @@ let Hosts = require('../models/user')
 
 //GET
 router.get('/', (req, res, next) => {
-  Hosts.find({ isHost: true })
+  Hosts.find({ isHost: true }, { zipcode: req.body.zipcode })
     .then(data => {
       res.send(data)
     })

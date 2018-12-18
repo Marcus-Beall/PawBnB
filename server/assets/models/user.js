@@ -14,7 +14,6 @@ let reviewSchema = new Schema({
 
 let schema = new Schema({
   name: { type: String, required: true },
-  //every email must be unique on the database
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   zipcode: { type: Number, required: true },

@@ -16,7 +16,7 @@
       <button class="btn btn-primary" @click="loginForm = !loginForm">Register</button>
       </fieldset>
     </form>
-    <form v-if="loginForm = !loginForm" @submit.prevent="submitLogin">
+    <form v-else @submit.prevent="submitLogin">
       <fieldset>
         <legend>Register</legend>
         <div class="form-group">
@@ -50,7 +50,7 @@
         loginForm: true
       }
     },
-    props: ['loginForm'],
+    props: [],
     computed: {},
     methods: {
 

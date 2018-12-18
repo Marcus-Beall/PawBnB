@@ -64,7 +64,7 @@
     computed: {},
     methods: {
       login() {
-        this.$store.dispatch('login', user)
+        this.$store.dispatch('login', this.user)
       },
       register() {
         this.$store.dispatch('register', newUser)

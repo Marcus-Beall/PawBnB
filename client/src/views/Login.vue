@@ -13,8 +13,7 @@
         </div>
       </fieldset>
       <button type="submit" class="btn btn-primary">Submit</button>
-      <button class="btn btn-primary" @click="loginForm = !loginForm">Register</button>
-      </fieldset>
+      <button class="btn btn-primary" type="button" @click="loginForm = !loginForm">Register</button>
     </form>
     <form v-else @submit.prevent="register">
       <fieldset>
@@ -36,7 +35,7 @@
           <input type="number" v-model="newUser.zipcode" class="form-control" id="zipcode">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
-        <button class="btn btn-primary" @click="loginForm = !loginForm">Login</button>
+        <button class="btn btn-primary" type="button" @click="loginForm = !loginForm">Login</button>
       </fieldset>
     </form>
   </div>
@@ -66,7 +65,7 @@
         this.$store.dispatch('login', this.user)
       },
       register() {
-        this.$store.dispatch('register', newUser)
+        this.$store.dispatch('register', this.newUser)
       }
     }
   }

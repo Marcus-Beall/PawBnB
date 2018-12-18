@@ -60,11 +60,6 @@
         }
       }
     },
-<<<<<<< HEAD
-    props: [],
-=======
-    props: ,
->>>>>>> 237af674faf5fa5231851eea8feeec29389784a8
     computed: {},
     methods: {
       login() {

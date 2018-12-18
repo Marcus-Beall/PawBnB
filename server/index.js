@@ -38,6 +38,10 @@ server.use((req, res, next) => {
   next()
 })
 
+let userRoutes = require('./assets/router/users')
+server.use('/api/users', userRoutes)
+let hostRoutes = require('./assets/router/hosts')
+server.use('/api/hosts', hostRoutes)
 
 server.use('*', (req, res, next) => {
   res.status(404).send({

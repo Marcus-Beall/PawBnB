@@ -21,11 +21,16 @@ let api = Axios.create({
 export default new Vuex.Store({
   state: {
     user: {},
-    pet: {}
+    pet: {},
+    results: [],
+
   },
   mutations: {
     setUser(state, user) {
       state.user = user
+    },
+    searchResults(state, results) {
+      state.results = results
     }
   },
   actions: {
@@ -46,6 +51,21 @@ export default new Vuex.Store({
       auth.get('authenticate')
         .then(res =>
           commit('setUser', res.data))
-    }
+    },
+    //Search
+    searchHosts({ commit, dispatch }, query) {
+      api.get('hosts', query)
+        .then(res => {
+          let results = res.data
+          commit('searchResults', results)
+        })
+    },
+    searchUsers({ commit, dispatch }, query) {
+      api.get('hosts', query)
+        .then(res => {
+          let results = res.data
+          commit('searchResults', results)
+        })
+    },
   }
 })

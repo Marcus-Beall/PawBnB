@@ -42,7 +42,6 @@ router.put('/auth/hosts/:id', (req, res) => {
       res.status(400).send(loginError)
     })
 })
-})
 
 router.post('/auth/login', (req, res) => {
   //FIND A USER BASED ON PROVIDED EMAIL

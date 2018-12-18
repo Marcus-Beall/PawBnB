@@ -24,9 +24,28 @@ export default new Vuex.Store({
     pet: {}
   },
   mutations: {
-
+    setUser(state, user) {
+      state.user = user
+    }
   },
   actions: {
-
+    //Auth
+    register({ commit, dispatch }, user) {
+      auth.post('register', user)
+        .then(res =>
+          commit('setUser', res.data))
+      router.push({ name: 'home' })
+    },
+    login({ commit, dispatch }, user) {
+      auth.post('login', user)
+        .then(res =>
+          commit('setUser', res.data))
+      router.push({ name: 'home' })
+    },
+    authenticate({ commit, dispatch }) {
+      auth.get('authenticate')
+        .then(res =>
+          commit('setUser', res.data))
+    }
   }
 })

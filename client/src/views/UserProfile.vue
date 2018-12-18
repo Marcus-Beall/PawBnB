@@ -1,12 +1,12 @@
 <template>
-  <div class="user-profile-view">
+  <div class="profile">
 
   </div>
 </template>
 
 <script>
   export default {
-    name: '',
+    name: 'profile',
     data() {
       return {
 

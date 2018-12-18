@@ -1,12 +1,12 @@
 <template>
-  <div class="auth-view">
+  <div class="login">
 
   </div>
 </template>
 
 <script>
   export default {
-    name: '',
+    name: 'login',
     data() {
       return {
 

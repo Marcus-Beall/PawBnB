@@ -1,12 +1,12 @@
 <template>
-  <div class="host-profile-view">
+  <div class="host">
 
   </div>
 </template>
 
 <script>
   export default {
-    name: '',
+    name: 'host',
     data() {
       return {
 

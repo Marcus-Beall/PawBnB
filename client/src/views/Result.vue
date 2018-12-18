@@ -1,12 +1,12 @@
 <template>
-  <div class="result-view">
+  <div class="result">
 
   </div>
 </template>
 
 <script>
   export default {
-    name: '',
+    name: 'result',
     data() {
       return {
 

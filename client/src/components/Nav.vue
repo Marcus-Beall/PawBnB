@@ -1,15 +1,15 @@
 <template>
   <div class="navi">
     <div class="col-4 d-flex justify-content-start">
-      <i class="fas fa-home"></i>
+      <router-link :to="{name:'home'}"><i class="fas fa-home"></i></router-link>
     </div>
     <div class="col-4 d-flex justify-content-center">
       <h1>PawBnB</h1>
     </div>
     <div class="col-4 d-flex justify-content-end">
-      <button>Help</button>
-      <button>Login</button>
-      <button>Host a Dog</button>
+      <button class="btn btn-primary">Help</button>
+      <router-link :to="{name:'login'}"><button class="btn btn-primary">Login</button></router-link>
+      <button class="btn btn-primary">Host a Dog</button>
     </div>
   </div>
 </template>

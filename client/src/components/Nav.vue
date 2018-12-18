@@ -1,12 +1,17 @@
 <template>
-  <div class="nav">
-
+  <div class="navi">
+    <i class="fas fa-home"></i>
+    <button>Home</button>
+    <h1>PawBnB</h1>
+    <button>Help</button>
+    <button>Login</button>
+    <button>Host a Dog</button>
   </div>
 </template>
 
 <script>
   export default {
-    name: '',
+    name: 'navi',
     data() {
       return {
 
@@ -19,6 +24,7 @@
 </script>
 
 <style>
-
-
+  .fas {
+    font-size: 30px;
+  }
 </style>

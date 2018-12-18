@@ -7,26 +7,41 @@ let loginError = new Error('Bad Email or Password')
 
 //CREATE A NEW USER
 router.post('/auth/register', (req, res) => {
-  //VALIDATE PASSWORD LENGTH
   if (req.body.password.length < 5) {
     return res.status(400).send({
       error: 'Password must be at least 5 characters'
     })
   }
-  //CHANGE THE PASSWORD TO A HASHED PASSWORD
+  // @ts-ignore
   req.body.password = Users.generateHash(req.body.password)
-  //CREATE THE USER
   Users.create(req.body)
     .then(user => {
-      //REMOVE THE PASSWORD BEFORE RETURNING
       delete user._doc.password
-      //SET THE SESSION UID (SHORT FOR USERID)
       req.session.uid = user._id
       res.send(user)
     })
     .catch(err => {
       res.status(400).send(err)
     })
+})
+
+router.get('/auth/hosts', (req, res) => {
+  Users.find({ isHost: true })
+    .then(users => {
+      res.send(users)
+    }).catch(err => {
+      res.status(400).send(loginError)
+    })
+})
+
+router.put('/auth/hosts/:id', (req, res) => {
+  Users.findByIdAndUpdate({ id: req.session.uid }, req.body, { new: true })
+    .then(user => {
+      res.send(user)
+    }).catch(err => {
+      res.status(400).send(loginError)
+    })
+})
 })
 
 router.post('/auth/login', (req, res) => {

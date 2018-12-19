@@ -12,6 +12,9 @@ let reviewSchema = new Schema({
   created: { type: Number, required: true, default: Date.now() }
 })
 
+let unavailableSchema = new Schema({
+  day: { type: Number }
+})
 let schema = new Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
@@ -24,7 +27,7 @@ let schema = new Schema({
   description: { type: String },
   price: { type: Number },
   address: { type: String },
-  unavilable: { type: Number }
+  unavailable: []
 }, {
     usePushEach: true
   })

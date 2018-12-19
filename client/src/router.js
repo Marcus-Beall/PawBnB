@@ -5,7 +5,7 @@ import Home from './views/Home.vue'
 // @ts-ignore
 import Login from './views/Login.vue'
 // @ts-ignore
-import Result from './views/Result.vue'
+import ResultPage from './views/ResultPage.vue'
 // @ts-ignore
 import Results from './views/Results.vue'
 // @ts-ignore
@@ -34,8 +34,8 @@ export default new Router({
     },
     {
       path: '/results/result',
-      name: 'result',
-      component: Result
+      name: 'resultPage',
+      component: ResultPage
     },
     {
       path: '/profile',

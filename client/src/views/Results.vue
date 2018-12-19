@@ -1,11 +1,11 @@
 <template>
   <div class="results">
-    <div v-for="result in results" class="col-6">
-      <div v-for=""></div>
-      <result v-if="available(result)" :result="result"></result>
-    </div>
-    <div class="col-6">
-      MAP HERE
+    <div class="container">
+      <div class="row">
+        <result v-for="result in results" :result="result">Boop</result>
+        <div class="col-3">
+        </div>
+      </div>
     </div>
   </div>
 
@@ -17,14 +17,6 @@
   import Result from '@/components/Result.vue'
   export default {
     name: 'results',
-    data() {
-      return {
-
-      }
-    },
-    components: {
-      Result
-    },
     computed: {
       results() {
         return this.$store.state.results
@@ -34,18 +26,28 @@
       }
     },
     methods: {
-      available(result) {
-        result.unavailable.forEach(date => {
-          if (this.query.includes(date))
-            return false
-        });
-      }
-    }
+      // available(result) {
+      //   let dates = result.unavailable
+      //   for (let i = 0; i < dates.length; i++) {
+      //     const date = dates[i];
+      //     let val = this.query.includes(date)
+      //     if (val) {
+      //       return false
+      //     }
+      //   }
+      //   return true
+      // }
+    },
+    components: {
+      Result
+    },
   }
+
 
 </script>
 
 <style>
-
-
+  .resultname {
+    height: 100px;
+  }
 </style>

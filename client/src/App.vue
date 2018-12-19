@@ -1,8 +1,8 @@
 <template>
-  <div id="app" class="container-fluid">
+  <div id="app">
     <navi class="row"></navi>
     <router-view />
-    <feet class="row"></feet>
+    <feet class="row fixed-bottom"></feet>
   </div>
 </template>
 

@@ -10,10 +10,10 @@
           <input v-model="query.search" type="text" placeholder="Search..." name="search" class="form-control" id="search"
             autofocus />
           <label class="control-label" for="date">From</label>
-          <input v-model="query.startdate" class="form-control" id="start-date" name="start-date" placeholder="MM/DD/YYY"
+          <input v-model="query.startdate" class="form-control" id="start-date" name="start-date" placeholder="MM/DD/YYYY"
             type="date" />
           <label class="control-label" for="date">To</label>
-          <input v-model="query.enddate" class="form-control" id="end-date" name="end-date" placeholder="MM/DD/YYY"
+          <input v-model="query.enddate" class="form-control" id="end-date" name="end-date" placeholder="MM/DD/YYYY"
             type="date" />
           <button class="btn" type="submit" name="submit">Search</button>
         </div>

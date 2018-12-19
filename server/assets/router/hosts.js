@@ -2,10 +2,10 @@ let router = require('express').Router()
 let Hosts = require('../models/user')
 
 //GET
-router.get('/', (req, res, next) => {
-  Hosts.find({ isHost: true })
+router.get('/:zipcode', (req, res, next) => {
+  Hosts.find({ isHost: true, zipcode: req.params.zipcode })
     .then(data => {
-      res.send('zipcode: ' + req.params.zipcode)
+      res.send(data)
     })
     .catch(err => {
       console.log(err)

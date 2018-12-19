@@ -23,6 +23,7 @@ export default new Vuex.Store({
     user: {},
     pet: {},
     results: [],
+    query: []
 
   },
   mutations: {
@@ -31,6 +32,14 @@ export default new Vuex.Store({
     },
     searchResults(state, results) {
       state.results = results
+    },
+    queryResults(state, query) {
+      state.query = []
+      let start = parseInt(query.startday) * parseInt(query.startmonth)
+      let end = parseInt(query.endday) * parseInt(query.endmonth)
+      for (let i = start; i <= end; i++) {
+        state.query.push(i);
+      }
     }
   },
   actions: {
@@ -58,6 +67,7 @@ export default new Vuex.Store({
         .then(res => {
           let results = res.data
           commit('searchResults', results)
+          commit('queryResults', query)
           router.push({ name: 'results' })
         })
     },

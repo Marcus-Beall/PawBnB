@@ -24,7 +24,7 @@ let schema = new Schema({
   description: { type: String },
   price: { type: Number },
   address: { type: String },
-  availableEnd: { type: Number }
+  unavilable: { type: Number }
 }, {
     usePushEach: true
   })

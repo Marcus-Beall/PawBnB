@@ -1,7 +1,8 @@
 <template>
   <div class="results">
     <div v-for="result in results" class="col-6">
-      <result :result="result"></result>
+      <div v-for=""></div>
+      <result v-if="available(result)" :result="result"></result>
     </div>
     <div class="col-6">
       MAP HERE
@@ -27,9 +28,19 @@
     computed: {
       results() {
         return this.$store.state.results
+      },
+      query() {
+        return this.$store.state.query
       }
     },
-    methods: {}
+    methods: {
+      available(result) {
+        result.unavailable.forEach(date => {
+          if (this.query.includes(date))
+            return false
+        });
+      }
+    }
   }
 
 </script>

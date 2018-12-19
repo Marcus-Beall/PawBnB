@@ -7,7 +7,7 @@
       <form class="px-2" @submit.prevent="search">
         <div class="form-group">
           <label class="control-label" for="search">Search for Hosts</label>
-          <input v-model="query.search" type="text" placeholder="Search..." name="search" class="form-control" id="search"
+          <input v-model="query.zipcode" type="text" placeholder="Search..." name="search" class="form-control" id="search"
             autofocus />
           <label class="control-label" for="date">From</label>
           <input v-model="query.startdate" class="form-control" id="start-date" name="start-date" placeholder="MM/DD/YYYY"
@@ -29,7 +29,7 @@
     data() {
       return {
         query: {
-          search: "",
+          zipcode: "",
           startdate: "",
           enddate: ""
         }

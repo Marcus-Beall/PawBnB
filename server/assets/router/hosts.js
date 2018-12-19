@@ -6,7 +6,7 @@ router.get('/', (req, res, next) => {
   Hosts.find({ isHost: true })
     .then(data => {
 
-      res.send('zipcode: ' + req.query.zipcode)
+      res.send('zipcode: ' + req.params.zipcode)
     })
     .catch(err => {
       console.log(err)

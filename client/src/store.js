@@ -54,7 +54,7 @@ export default new Vuex.Store({
     },
     //Search
     searchHosts({ commit, dispatch }, query) {
-      api.get('hosts', query)
+      api.get('hosts/' + query.zipcode)
         .then(res => {
           let results = res.data
           commit('searchResults', results)

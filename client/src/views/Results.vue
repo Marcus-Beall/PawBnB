@@ -1,7 +1,7 @@
 <template>
   <div class="results">
     <div v-for="result in results" class="col-6">
-      <result :list="result"></result>
+      <result :result="result"></result>
     </div>
     <div class="col-6">
       MAP HERE
@@ -25,7 +25,7 @@
       Result
     },
     computed: {
-      result() {
+      results() {
         return this.$store.state.results
       }
     },

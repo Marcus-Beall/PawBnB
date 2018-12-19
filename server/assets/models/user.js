@@ -23,7 +23,8 @@ let schema = new Schema({
   img: { type: String },
   description: { type: String },
   price: { type: Number },
-  address: { type: String }
+  address: { type: String },
+  availableEnd: { type: Number }
 }, {
     usePushEach: true
   })

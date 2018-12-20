@@ -7,9 +7,15 @@
     <h4>${{result.price}}</h4>
     <button type="button" name="book" id="book" class="btn btn-primary" btn-lg btn-block>Book</button>
     <form @submit="addReview">
-      <input type="textarea" v-model="review.reviewBody" placeholder="Add a review here...">
+      <input type="textarea" v-model="review.reviewBody.content" placeholder="Add a review here...">
     </form>
     <button type="submit">Review!</button>
+    <h4>Reviews</h4>
+    <ul>
+      <div v-for="review in reviews">
+        <li>{{review.content}}</li>
+      </div>
+    </ul>
 
 
   </div>
@@ -21,13 +27,19 @@
     data() {
       return {
         review: {
-          reviewBody: ''
+          reviewBody: {
+            ratings: 1,
+            content: ''
+          }
         }
       }
     },
     computed: {
       result() {
         return this.$store.state.activeResult
+      },
+      reviews() {
+        return this.$store.state.activeResult.reviews
       }
     },
     methods: {

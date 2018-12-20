@@ -2,7 +2,7 @@
   <div class="results">
     <div class="container">
       <div class="row">
-        <result v-if="available(result)" v-for="result in results" :result="result">Boop</result>
+        <result v-if="available(result)" v-for="result in results" :reviews="result.reviews" :result="result">Boop</result>
         <div class="col-3">
         </div>
       </div>

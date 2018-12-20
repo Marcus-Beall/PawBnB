@@ -8,6 +8,7 @@
     <button type="button" name="book" id="book" class="btn btn-primary" btn-lg btn-block>Book</button>
     <form @submit="addReview">
       <input type="textarea" v-model="review.reviewBody.content" id="review" placeholder="Add a review here...">
+      <v-rating v-model="review.reviewBody.ratings"></v-rating>
       <button type="submit">Review!</button>
     </form>
     <h4>Reviews</h4>

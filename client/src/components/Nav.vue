@@ -5,16 +5,23 @@
     </div>
     <div class="col-6 d-flex justify-content-end">
       <button class="btn btn-primary">Help</button>
-      <span v-if="user._id"><button @click="logout" class="btn btn-primary">Logout</button></span>
+      <span v-if="user._id">
+        <v-menu offset-y>
+          <v-btn slot="activator" color="primary" dark>{{user.name}}
+          </v-btn>
+
+          </button>
+          <v-list>
+            <v-list-tile @click="logout">Logout</v-list-tile>
+            <v-list-tile>
+              <router-link :to="{name: 'host'}">Host a Dog</router-link>
+            </v-list-tile>
+          </v-list>
+        </v-menu>
+      </span>
       <span v-else>
         <router-link :to="{name:'login'}"><button class="btn btn-primary">Login</button></router-link>
       </span>
-      <button @click="auth" class="btn btn-primary"><span v-if="user._id">
-          <router-link :to="{name: 'host'}">Host a Dog</router-link>
-        </span><span v-else>
-          <router-link :to="{name: 'login'}">Host a Dog</router-link>
-        </span>
-      </button>
     </div>
   </div>
 </template>

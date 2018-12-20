@@ -35,7 +35,8 @@ export default new Router({
     {
       path: '/results/result',
       name: 'resultPage',
-      component: ResultPage
+      component: ResultPage,
+      props: true
     },
     {
       path: '/profile',

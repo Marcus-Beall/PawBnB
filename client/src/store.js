@@ -82,6 +82,7 @@ export default new Vuex.Store({
         })
     },
     activeResult({ commit, dispatch }, result) {
+      debugger
       commit('setActive', result)
     }
   }

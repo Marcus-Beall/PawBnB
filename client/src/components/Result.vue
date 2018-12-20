@@ -6,16 +6,12 @@
         <h5 class="card-title">{{result.name}}</h5>
         <p class="card-text">{{result.description}}</p>
         <p class="card-text">{{result.price}}</p>
-        <router-link :to="{name: 'resultPage'}" @click="setActive"><button class="btn btn-primary">Go
-            {{result.address}}</button></router-link>
+        <button @click="setActive" class="btn btn-primary">
+          <router-link :to="{name: 'resultPage'}">Go
+            {{result.address}}</router-link>
+        </button>
       </div>
     </div>
-    <!--       
-      description
-      select button
-      reviews, price
-     -->
-
   </div>
   </div>
   </div>
@@ -27,7 +23,6 @@
     props: ['result'],
     data() {
       return {
-
       }
     },
     computed: {},

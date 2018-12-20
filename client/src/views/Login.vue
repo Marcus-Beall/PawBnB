@@ -35,6 +35,9 @@
           <input type="number" v-model="newUser.zipcode" class="form-control" id="zipcode">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">
+          <router-link to="">Submit and Become a Host</router-link>
+        </button>
         <button class="btn btn-primary" type="button" @click="loginForm = !loginForm">Login</button>
       </fieldset>
     </form>

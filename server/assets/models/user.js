@@ -12,6 +12,10 @@ let reviewSchema = new Schema({
   created: { type: Number, required: true, default: Date.now() }
 })
 
+let imageSchema = new Schema({
+  img: { type: String }
+})
+
 let unavailableSchema = new Schema({
   day: { type: Number }
 })
@@ -23,7 +27,7 @@ let schema = new Schema({
   reviews: [reviewSchema],
   created: { type: Number, required: true, default: Date.now() },
   isHost: { type: Boolean, default: false },
-  img: { type: String },
+  images: [imageSchema],
   description: { type: String },
   price: { type: Number },
   address: { type: String },

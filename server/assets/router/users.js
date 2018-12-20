@@ -25,4 +25,20 @@ router.get('/:id', (req, res, next) => {
     })
 })
 
+//post a reviews
+
+router.post('/:userId/reviews', (req, res, next) => {
+  Users.findById(req.params.userId)
+    .then(user => {
+      user.reviews.push(req.body)
+      user.save(err => {
+        if (err) {
+          next(err)
+        }
+        res.send(user)
+      })
+    })
+})
+
+
 module.exports = router

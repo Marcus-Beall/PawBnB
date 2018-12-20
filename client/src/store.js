@@ -87,7 +87,14 @@ export default new Vuex.Store({
         })
     },
     activeResult({ commit, dispatch }, result) {
+      debugger
       commit('setActive', result)
+    },
+    newReview({ commit, dispatch }, review) {
+      api.post(review.hostId + '/review', review.reviewBody)
+        .then(res => {
+          commit('setActive', res.data)
+        })
     }
   }
 })

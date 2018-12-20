@@ -6,6 +6,10 @@
     <p>{{result.description}}</p>
     <h4>${{result.price}}</h4>
     <button type="button" name="book" id="book" class="btn btn-primary" btn-lg btn-block>Book</button>
+    <form @submit="addReview">
+      <input type="textarea" v-model="review.reviewBody" placeholder="Add a review here...">
+    </form>
+    <button type="submit">Review!</button>
 
 
   </div>
@@ -16,6 +20,10 @@
     name: 'resultPage',
     data() {
       return {
+        review: {
+          hostId: this.result._id,
+          reviewBody: ''
+        }
       }
     },
     computed: {
@@ -23,7 +31,11 @@
         return this.$store.state.activeResult
       }
     },
-    methods: {}
+    methods: {
+      addReview() {
+        this.$store.dispatch('newReview', review)
+      }
+    }
   }
 
 </script>

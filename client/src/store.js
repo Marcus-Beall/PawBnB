@@ -35,15 +35,15 @@ export default new Vuex.Store({
     },
     setActive(state, result) {
       state.activeResult = result
+    },
+    queryResults(state, query) {
+      state.query = []
+      let start = parseInt(query.startday) * parseInt(query.startmonth) + (30 * (query.startmonth - 1))
+      let end = parseInt(query.endday) * parseInt(query.endmonth) + (30 * (query.endmonth - 1))
+      for (let i = start; i <= end; i++) {
+        state.query.push(i);
+      }
     }
-    // queryResults(state, query) {
-    //   state.query = []
-    //   let start = parseInt(query.startday) * parseInt(query.startmonth) + (30 * (query.startmonth - 1))
-    //   let end = parseInt(query.endday) * parseInt(query.endmonth) + (30 * (query.endmonth - 1))
-    //   for (let i = start; i <= end; i++) {
-    //     state.query.push(i);
-    //   }
-    // }
   },
   actions: {
     //Auth
@@ -75,7 +75,7 @@ export default new Vuex.Store({
         .then(res => {
           let results = res.data
           commit('searchResults', results)
-          // commit('queryResults', query)
+          commit('queryResults', query)
           router.push({ name: 'results' })
         })
     },

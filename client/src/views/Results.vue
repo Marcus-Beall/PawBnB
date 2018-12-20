@@ -2,7 +2,7 @@
   <div class="results">
     <div class="container">
       <div class="row">
-        <result v-for="result in results" :result="result">Boop</result>
+        <result v-if="available(result)" v-for="result in results" :result="result">Boop</result>
         <div class="col-3">
         </div>
       </div>
@@ -26,17 +26,17 @@
       }
     },
     methods: {
-      // available(result) {
-      //   let dates = result.unavailable
-      //   for (let i = 0; i < dates.length; i++) {
-      //     const date = dates[i];
-      //     let val = this.query.includes(date)
-      //     if (val) {
-      //       return false
-      //     }
-      //   }
-      //   return true
-      // }
+      available(result) {
+        let dates = result.unavailable
+        for (let i = 0; i < dates.length; i++) {
+          const date = dates[i];
+          let val = this.query.includes(date)
+          if (val) {
+            return false
+          }
+        }
+        return true
+      }
     },
     components: {
       Result

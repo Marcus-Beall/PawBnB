@@ -64,6 +64,11 @@ export default new Vuex.Store({
         .then(res =>
           commit('setUser', res.data))
     },
+    logout({ commit, dispatch }) {
+      auth.delete('logout')
+        .then(res =>
+          commit('setUser', res.data))
+    },
     //Search
     searchHosts({ commit, dispatch }, query) {
       api.get('hosts/' + query.zipcode)
@@ -82,7 +87,6 @@ export default new Vuex.Store({
         })
     },
     activeResult({ commit, dispatch }, result) {
-      debugger
       commit('setActive', result)
     }
   }

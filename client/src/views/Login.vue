@@ -36,7 +36,7 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
         <button type="submit" class="btn btn-primary">
-          <router-link to="">Submit and Become a Host</router-link>
+          <router-link :to="{name: 'host'}">Submit and Become a Host</router-link>
         </button>
         <button class="btn btn-primary" type="button" @click="loginForm = !loginForm">Login</button>
       </fieldset>

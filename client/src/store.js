@@ -96,6 +96,14 @@ export default new Vuex.Store({
         .then(res => {
           commit('setActive', res.data)
         })
+    },
+
+    //USERDATA
+    updateHost({ commit, dispatch }, hostData) {
+      api.put('hosts/' + hostData.hostId, hostData)
+        .then(res => {
+          commit('setUser', res.data)
+        })
     }
   }
 })

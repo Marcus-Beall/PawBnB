@@ -12,7 +12,7 @@
       <button @click="auth" class="btn btn-primary"><span v-if="user._id">
           <router-link :to="{name: 'host'}">Host a Dog</router-link>
         </span><span v-else>
-          <router-link to="{name: 'login'}">Host a Dog</router-link>
+          <router-link :to="{name: 'login'}">Host a Dog</router-link>
         </span>
       </button>
     </div>

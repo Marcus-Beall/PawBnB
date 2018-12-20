@@ -25,4 +25,17 @@ router.get('/:id', (req, res, next) => {
     })
 })
 
+//CHANGE HOST DATA
+router.put('/:id', (req, res, next) => {
+  Hosts.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .then(data => {
+      res.send(data)
+    })
+    .catch(err => {
+      console.log(err)
+      next()
+    })
+})
+
+
 module.exports = router

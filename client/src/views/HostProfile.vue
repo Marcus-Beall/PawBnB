@@ -21,6 +21,7 @@
         <input type="file" class="form-control-file" id="imageFile" aria-describedby="imageFileText">
         <small id="imageFileText" class="form-text text-muted">Upload up to 5 pictures.</small>
       </div>
+      <button type="submit" class="btn btn-light">Submit</button>
     </form>
   </div>
 </template>
@@ -31,9 +32,9 @@
     data() {
       return {
         hostData: {
-          description: '',
-          price: '',
-          address: ''
+          description: this.$store.state.user.description,
+          price: this.$store.state.user.price,
+          address: this.$store.state.user.address
         }
       }
     },
@@ -44,7 +45,9 @@
     },
     methods: {
       enterHostData() {
-        parseInt(this.hostData.price)
+        this.hostData.price = parseInt(this.hostData.price)
+        this.hostData.hostId = this.user._id
+        this.hostData.isHost = true
         this.$store.dispatch('updateHost', this.hostData)
       }
     }

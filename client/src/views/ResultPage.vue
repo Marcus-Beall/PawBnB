@@ -1,5 +1,5 @@
 <template>
-  <div class="resultpage">
+  <div v-if="result._id" class="resultpage">
     <img :src="result.img">
     <h1>{{result.name}}</h1>
     <h3>Description</h3>
@@ -21,7 +21,6 @@
     data() {
       return {
         review: {
-          hostId: this.result._id,
           reviewBody: ''
         }
       }
@@ -33,6 +32,7 @@
     },
     methods: {
       addReview() {
+        review.hostId = this.result._id
         this.$store.dispatch('newReview', review)
       }
     }

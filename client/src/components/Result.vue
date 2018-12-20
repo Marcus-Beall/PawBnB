@@ -28,7 +28,6 @@
     computed: {},
     methods: {
       setActive() {
-        debugger
         this.$store.dispatch('activeResult', this.result)
       }
     }

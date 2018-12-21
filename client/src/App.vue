@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <navi class="row"></navi>
     <router-view />
-    <feet class="row fixed-bottom"></feet>
   </div>
 </template>
 <script>

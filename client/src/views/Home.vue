@@ -1,5 +1,5 @@
 <template>
-  <q-page class="container-fluid">
+  <q-page class="d-flex flex-row">
     <div class="home">
       <div class="row box d-flex justify-content-center">
         <h1>P<i class="fas fa-paw" />wBnB</h1>

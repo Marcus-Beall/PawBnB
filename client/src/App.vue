@@ -1,11 +1,10 @@
 <template>
-  <v-app>
+  <div id="app">
     <navi class="row"></navi>
     <router-view />
     <feet class="row fixed-bottom"></feet>
-  </v-app>
+  </div>
 </template>
-
 <script>
   import navi from '@/components/Nav.vue'
   import feet from '@/components/Feet.vue'

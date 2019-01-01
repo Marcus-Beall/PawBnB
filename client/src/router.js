@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // @ts-ignore
-import DefaultLayout from './layouts/Default.vue'
+import DefaultLayout from './layouts/Defalult.vue'
 // @ts-ignore
 import Home from './views/Home.vue'
 // @ts-ignore

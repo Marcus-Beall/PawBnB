@@ -34,7 +34,7 @@ export default new Vuex.Store({
     setPets(state, pets) {
       state.pets = pets
     },
-    setPet(state, pet) {
+    currentPet(state, pet) {
       state.pet = pet
     },
     searchResults(state, results) {
@@ -125,6 +125,10 @@ export default new Vuex.Store({
         .then(res => {
           commit('setPet', res.data)
         })
+    },
+    setPet({ commit, dispatch }, petData) {
+      console.log(petData)
+      commit('currentPet', petData)
     },
 
     getPets({ commit, dispatch }, ownerId) {

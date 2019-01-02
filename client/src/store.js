@@ -8,13 +8,13 @@ let baseURL = "//localhost:3000/"
 
 let auth = Axios.create({
   baseURL: baseURL + "auth/",
-  timeout: 3000,
+  timeout: 8000,
   withCredentials: true
 })
 
 let api = Axios.create({
   baseURL: baseURL + "api/",
-  timeout: 3000,
+  timeout: 8000,
   withCredentials: true
 })
 
@@ -22,6 +22,7 @@ export default new Vuex.Store({
   state: {
     user: {},
     pet: {},
+    pets: [],
     results: [],
     query: [],
     activeResult: {}
@@ -29,6 +30,12 @@ export default new Vuex.Store({
   mutations: {
     setUser(state, user) {
       state.user = user
+    },
+    setPets(state, pets) {
+      state.pets = pets
+    },
+    setPet(state, pet) {
+      state.pet = pet
     },
     searchResults(state, results) {
       state.results = results
@@ -67,9 +74,9 @@ export default new Vuex.Store({
     logout({ commit, dispatch }) {
       auth.delete('logout')
         .then(res =>
-        commit('setUser', res.data))
+          commit('setUser', res.data))
     },
-    
+
     //Search
     searchHosts({ commit, dispatch }, query) {
       api.get('hosts/' + query.zipcode)
@@ -91,7 +98,6 @@ export default new Vuex.Store({
       commit('setActive', result)
     },
     newReview({ commit, dispatch }, review) {
-      debugger
       console.log(review)
       api.post('users/' + review.hostId + '/reviews', review.reviewBody)
         .then(res => {
@@ -109,8 +115,35 @@ export default new Vuex.Store({
     onUpload({ commit, dispatch }, imgFile) {
       api.post('hosts/' + imgFile.userId + '/img', imgFile.file)
         .then(res => {
-        commit('setUser', res.data)
-      })
+          commit('setUser', res.data)
+        })
+    },
+
+    //Pet Data
+    createPet({ commit, dispatch }, petData) {
+      api.post('pets/', petData)
+        .then(res => {
+          commit('setPet', res.data)
+        })
+    },
+
+    getPets({ commit, dispatch }, ownerId) {
+      api.get('pets/' + ownerId)
+        .then(res => {
+          commit('setPets', res.data)
+        })
+    },
+    updatePets({ commit, dispatch }, petData) {
+      api.put('pets/', petData)
+        .then(res => {
+          commit('setPets', res.data)
+        })
+    },
+    updatePet({ commit, dispatch }, petData) {
+      api.put('pets/', petData)
+        .then(res => {
+          commit('setPet', res.data)
+        })
     }
   }
 })

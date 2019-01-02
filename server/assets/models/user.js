@@ -13,7 +13,11 @@ let reviewSchema = new Schema({
 })
 
 let imageSchema = new Schema({
-  img: { type: String }
+  name: { type: String },
+  size: { type: Number },
+  type: { type: String }
+  
+  
 })
 
 let unavailableSchema = new Schema({

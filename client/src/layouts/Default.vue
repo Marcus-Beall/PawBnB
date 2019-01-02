@@ -26,9 +26,13 @@
           </q-list>
           <q-item-separator />
           <q-item @click="logout"><router-link :to="{name: 'home'}">Logout</router-link></q-item>
-          <q-item>
+          <q-item v-if="!user.isHost">
             <router-link :to="{name: 'profile'}">Profile Page</router-link>
           </q-item>
+          <q-item v-else>
+            <router-link :to="{name: 'host'}">Profile Page</router-link>
+         </q-item>
+
           <q-item v-if="!user.isHost">
             <router-link :to="{name: 'host'}">Host a Dog</router-link>
           </q-item>

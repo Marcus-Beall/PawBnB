@@ -18,11 +18,16 @@ server.use(cors(corsOptions))
 
 require('./assets/db/mlab-config')
 
-
-server.use(bp.json())
+server.use(bp.json({ limit: '50mb' }));
 server.use(bp.urlencoded({
-  extended: true
+  limit: '50mb',
+  extended: true,
+  parameterLimit: 50000
 }))
+// server.use(bp.json())
+// server.use(bp.urlencoded({
+//   extended: true
+// }))
 
 let auth = require('./assets/auth/routes')
 server.use(auth.session)

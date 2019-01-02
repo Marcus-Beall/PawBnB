@@ -112,6 +112,12 @@ export default new Vuex.Store({
           commit('setUser', res.data)
         })
     },
+    onUpload({ commit, dispatch }, imgFile) {
+      api.post('hosts/' + imgFile.userId + '/img', imgFile.file)
+        .then(res => {
+          commit('setUser', res.data)
+        })
+    },
 
     //Pet Data
     createPet({ commit, dispatch }, petData) {

@@ -17,7 +17,6 @@ let imageSchema = new Schema({
   size: { type: Number },
   type: { type: String }
   
-  
 })
 
 let unavailableSchema = new Schema({

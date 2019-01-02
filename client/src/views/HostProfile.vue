@@ -26,9 +26,9 @@
           <button type="submit" class="btn btn-light">Upload</button>
         </div>
       </form>
-      <!-- <div>
+      <div>
         <image></image>
-      </div> -->
+      </div>
 
         <!-- <div v-for="img in images">
           <img src="" >
@@ -37,6 +37,7 @@
 </template>
 
 <script>
+  import Image from '../components/Image.vue'
   export default {
     name: 'host',
     data() {
@@ -74,6 +75,9 @@
         console.log(imgFile)
         this.$store.dispatch ('onUpload', imgFile)
       }
+    },
+    components: {
+      Image
     }
   }
 

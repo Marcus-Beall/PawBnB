@@ -28,6 +28,16 @@
       <button type="submit" class="btn btn-light">Submit</button>
     </form>
     <legend>My Fur Babies</legend>
+
+    <q-tabs v-model="selectedPet">
+      <q-tab v-for="pet in pets" slot="title" @click="setPet(pet);  activePet = pet" label="New Pet"></q-tab>
+      <span>
+        <q-tab @click="setPet(pet)" slot="title" :label="pet.name"></q-tab>
+      </span>
+    </q-tabs>
+
+
+
     <form @submit.prevent="enterPetData">
       <div class="form-group">
         <label for="pet-name">Pet Name</label>
@@ -64,13 +74,15 @@
           price: this.$store.state.user.price,
           address: this.$store.state.user.address
         },
+        activePet: {},
         petData: {
           name: this.$store.state.pet.name,
           type: this.$store.state.pet.type,
           img: this.$store.state.pet.img,
           cntct: this.$store.state.pet.cntct,
           notes: this.$store.state.pet.notes
-        }
+        },
+        selectedPet: ''
       }
     },
     mounted() {
@@ -99,6 +111,21 @@
       getPets(userId) {
         console.log(userId)
         this.$store.dispatch('getPets', userId)
+      },
+      setPet(pet) {
+        this.$store.dispatch('setPet', pet)
+      }
+    },
+    watch: {
+      activePet: function () {
+        console.log('activepet watcher')
+        this.petData = {
+          name: this.activePet.name,
+          type: this.activePet.type,
+          img: this.activePet.img,
+          cntct: this.activePet.cntct,
+          notes: this.activePet.notes
+        }
       }
     }
 

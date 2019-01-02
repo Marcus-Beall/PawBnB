@@ -33,6 +33,9 @@ let userRoutes = require('./assets/router/users')
 server.use('/api/users', userRoutes)
 let hostRoutes = require('./assets/router/hosts')
 server.use('/api/hosts', hostRoutes)
+let petRoutes = require('./assets/router/pets')
+server.use('/api/pets', petRoutes)
+
 
 server.use((req, res, next) => {
   if (!req.session.uid) {

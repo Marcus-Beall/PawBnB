@@ -20,11 +20,16 @@ server.use(cors(corsOptions))
 
 require('./assets/db/mlab-config')
 
-
-server.use(bp.json())
+server.use(bp.json({ limit: '50mb' }));
 server.use(bp.urlencoded({
-  extended: true
+  limit: '50mb',
+  extended: true,
+  parameterLimit: 50000
 }))
+// server.use(bp.json())
+// server.use(bp.urlencoded({
+//   extended: true
+// }))
 
 let auth = require('./assets/auth/routes')
 server.use(auth.session)
@@ -37,6 +42,9 @@ let userRoutes = require('./assets/router/users')
 server.use('/api/users', userRoutes)
 let hostRoutes = require('./assets/router/hosts')
 server.use('/api/hosts', hostRoutes)
+let petRoutes = require('./assets/router/pets')
+server.use('/api/pets', petRoutes)
+
 
 server.use((req, res, next) => {
   if (!req.session.uid) {

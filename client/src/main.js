@@ -12,6 +12,8 @@ import 'quasar-extras/material-icons'
 import 'quasar-extras/fontawesome'
 // @ts-ignore
 import Quasar from 'quasar'
+// @ts-ignore
+import VueBase64FileUpload from 'vue-base64-file-upload';
 
 // @ts-ignore
 Vue.use(Quasar, {

@@ -15,24 +15,25 @@
         <input type="text" id="address" v-model="hostData.address" class="form-control" placeholder="" aria-describedby="addressText">
         <small id="addressText" class="text-muted">Will not be shown to anyone unless a booking is accepted by both
           parties.</small>
-        </div>
-        <button type="submit" class="btn btn-light">Submit</button>
-      </form>
-      <form @submit.prevent="onUpload">
-        <div class="form-group">
-          <label for="imageFile">Images</label>
-          <input type="file" @change="onFileSelected" class="form-control-file" id="imageFile" aria-describedby="imageFileText">
-          <small id="imageFileText" class="form-text text-muted">Upload up to 7 pictures.</small>
-          <button type="submit" class="btn btn-light">Upload</button>
-        </div>
-      </form>
-      <!-- <div>
+      </div>
+      <button type="submit" class="btn btn-light">Submit</button>
+    </form>
+    <form @submit.prevent="onUpload">
+      <div class="form-group">
+        <label for="imageFile">Images</label>
+        <input type="file" @change="onFileSelected" class="form-control-file" id="imageFile" aria-describedby="imageFileText">
+        <small id="imageFileText" class="form-text text-muted">Upload up to 7 pictures.</small>
+        <button type="submit" class="btn btn-light">Upload</button>
+      </div>
+    </form>
+    <!-- <div>
         <image></image>
       </div> -->
 
-        <!-- <div v-for="img in images">
+    <!-- <div v-for="img in images">
           <img src="" >
         </div> -->
+    <router-link :to="{name: 'profile'}">My Muppet Babies</router-link :to="{name: 'profile'}">
   </div>
 </template>
 
@@ -63,16 +64,16 @@
       },
 
       onFileSelected(event) {
-        this.selectedFile = event.target.files[0] 
+        this.selectedFile = event.target.files[0]
       },
 
       onUpload() {
         // const fd = new FormData();
         // fd.append('image', this.selectedFile)
-        
-        let imgFile = {userId:this.user._id, file:this.selectedFile}
+
+        let imgFile = { userId: this.user._id, file: this.selectedFile }
         console.log(imgFile)
-        this.$store.dispatch ('onUpload', imgFile)
+        this.$store.dispatch('onUpload', imgFile)
       }
     }
   }

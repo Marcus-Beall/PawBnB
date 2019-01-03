@@ -142,6 +142,13 @@
           cntct: this.activePet.cntct,
           notes: this.activePet.notes
         }
+      },
+      activeUser: function () {
+        this.userData = {
+          description: this.$store.state.user.description,
+          price: this.$store.state.user.price,
+          address: this.$store.state.user.address
+        }
       }
     }
 

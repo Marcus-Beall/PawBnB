@@ -12,6 +12,12 @@ let auth = Axios.create({
   withCredentials: true
 })
 
+let imgApi = Axios.create({
+  baseURL: baseURL + "api/",
+  timeout: 20000,
+  withCredentials: true
+})
+
 let api = Axios.create({
   baseURL: baseURL + "api/",
   timeout: 8000,
@@ -140,10 +146,18 @@ export default new Vuex.Store({
         })
     },
 
+    upLoad({commit, dispatch}, imgData) {
+      imgApi.post('hosts/' + imgData.id + '/img', imgData)
+        .then(res => {
+        commit('setUser', res.data)
+      })
+    },
+
     //BOOKING
     startBooking({ commit, dispatch }, booking) {
       commit('setBooking', booking)
     },
+
     makeBooking({ commit, dispatch }, booking) {
       api.post()
       commit('')

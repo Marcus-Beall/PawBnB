@@ -17,26 +17,19 @@
           parties.</small>
       </div> <button type="submit" class="btn btn-light">Submit</button>
     </form>
-  </form>
+    </form>
     <h2>Upload file</h2>
     <div>
       <vue-base64-file-upload id="picture" class="v1" accept="image/png,image/jpeg" image-class="v1-image" input-class="v1-image js-test"
-        :max-size="customImageMaxSize" @size-exceeded="onSizeExceeded" @file="onFile" @load="onLoad" v-model="file"/><button @click="upLoad">Submit Photo</button>
+        :max-size="customImageMaxSize" @size-exceeded="onSizeExceeded" @file="onFile" @load="onLoad" v-model="file" /><button
+        @click="upLoad">Submit Photo</button>
     </div>
     <div v-for="image in images">
       <div class="card">
-      <img class="uploadedImage" :src="image.file">
+        <img class="uploadedImage" :src="image.file">
       </div>
     </div>
-    <div class="row">
-      <div class="col-12">
 
-        <router-link :to="{name: 'profile'}">
-          <q-btn label="Go to My Pets" no-wrap glossy full-width color="primary" class="absolute-center">
-          </q-btn>
-        </router-link :to="{name: 'profile'}">
-      </div>
-    </div>
     <legend>Select Unavailable Dates</legend>
     <form class="px-2" @submit.prevent="setUnavailable">
       <div class="form-group">
@@ -56,6 +49,9 @@
 
     </form>
 
+    <router-link :to="{name: 'profile'}">
+      Go to My Pets
+    </router-link :to="{name: 'profile'}">
   </div>
   </div>
 </template>
@@ -148,10 +144,11 @@
 </script>
 
 <style>
- .v1-image {
-   max-width: 200px;
- }
- .uploadedImage {
-   max-width: 200px;
- }
+  .v1-image {
+    max-width: 200px;
+  }
+
+  .uploadedImage {
+    max-width: 200px;
+  }
 </style>

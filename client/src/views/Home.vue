@@ -2,9 +2,13 @@
   <q-page class="d-flex flex-row">
     <div class="home">
       <div class="row box d-flex justify-content-center">
-        <h1>P<i class="fas fa-paw" />wBnB</h1>
+        <h1>P<i id="home-icon"class="fas fa-paw"/>wBnB</h1>
       </div>
+      <div class="row search-box">
+        <div class="col-9 offset-1">
       <search></search>
+      </div>
+      </div>
     </div>
   </q-page>
 </template>
@@ -28,13 +32,25 @@
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+    text-align: center;
   }
+
+
 
   .box {
     height: 18vh;
+    margin-top: 100px;
   }
 
   h1 {
     margin-top: 50px;
+  }
+
+  #home-icon {
+    font-size: 180px;
+  }
+  
+  .search-box {
+    margin-top: 100px;
   }
 </style>

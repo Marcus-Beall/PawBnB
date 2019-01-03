@@ -5,7 +5,7 @@ let Hosts = require('../models/user')
 
 //UPDATE A HOST
 router.put('/:hostId', (req, res, next) => {
-  Hosts.findByIdAndUpdate(req.params.hostId, { new: true })
+  Hosts.findByIdAndUpdate(req.params.hostId, req.body, { new: true })
     .then(data => {
       res.send(data)
     })

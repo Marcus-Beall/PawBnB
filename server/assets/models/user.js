@@ -17,9 +17,19 @@ let imageSchema = new Schema({
 
 })
 
+// let unavailableSchema = new Schema({
+//   startDay: { type: Number },
+//   startMonth: { type: Number },
+//   startYear: { type: Number },
+//   endDay: { type: Number },
+//   endMonth: { type: Number },
+//   endYear: { type: Number }
+// })
 let unavailableSchema = new Schema({
-  day: { type: Number }
+  startDate: { type: Number },
+  endDate: { type: Number }
 })
+
 
 let schema = new Schema({
   name: { type: String, required: true },
@@ -33,7 +43,7 @@ let schema = new Schema({
   description: { type: String },
   price: { type: Number },
   address: { type: String },
-  unavailable: [],
+  unavailable: [unavailableSchema],
   chats: {
     type: ['Chat'],
     default: undefined

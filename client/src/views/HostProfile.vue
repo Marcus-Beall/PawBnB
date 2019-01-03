@@ -1,7 +1,7 @@
 <template>
   <div class="host">
     <form @submit.prevent="enterHostData">
-      <legend>Legend</legend>
+      <legend>My Host Profile</legend>
       <div class="form-group">
         <label for="description">Description</label>
         <textarea v-model="hostData.description" class="form-control" id="description" rows="3"></textarea>
@@ -72,7 +72,9 @@
           startmonth: "",
           startday: "",
           endmonth: "",
-          endday: ""
+          endday: "",
+          // startDate: new Date('03, January 2019').getTime(),
+          //endDate: new Date('04, January 2019').getTime()
         },
         hostData: {
           description: this.$store.state.user.description,
@@ -99,7 +101,7 @@
 
     methods: {
       setUnavailable() {
-        this.$store.dispatch('setUnavailable')
+        this.$store.dispatch('setUnavailable', this.unavailable)
       },
       enterHostData() {
         this.hostData.price = parseInt(this.hostData.price)

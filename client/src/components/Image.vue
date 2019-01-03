@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="container">
     <h2>Upload file</h2>
     <vue-base64-file-upload class="v1" 
@@ -45,4 +45,4 @@ import VueBase64FileUpload from 'vue-base64-file-upload';
     }
   }
 
-</script>
+</script> -->

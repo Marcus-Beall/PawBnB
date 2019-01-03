@@ -2,11 +2,7 @@
   <div class="profile">
     <form @submit.prevent="enterUserData">
       <legend class="d-flex justify-content-center">About Me</legend>
-      <div class="form-group">
-        <label for="imageFile">Images</label>
-        <input type="file" class="form-control-file" id="imageFile" aria-describedby="imageFileText">
-        <small id="imageFileText" class="form-text text-muted">Upload up to 5 pictures.</small>
-      </div>
+
       <div class="form-group">
         <label for="description">Description</label>
         <textarea v-model="userData.description" class="form-control" id="description" rows="3"></textarea>
@@ -65,10 +61,26 @@
       </div>
       <button type="submit" class="btn btn-primary">Add Pet</button>
     </form>
+
+    <h4>Upload file</h4>
+    <div>
+      <vue-base64-file-upload id="picture" class="v1" accept="image/png,image/jpeg" image-class="v1-image" input-class="v1-image js-test"
+        :max-size="customImageMaxSize" @size-exceeded="onSizeExceeded" @file="onFile" @load="onLoad" v-model="file" />
+      <button @click="upLoad">Submit Photo</button>
+    </div>
+    <div v-for="image in images">
+      <div class="card">
+        <img class="uploadedImage" :src="image.file">
+      </div>
+    </div>
+    <router-link :to="{name: 'profile'}">My Muppet Babies</router-link :to="{name: 'profile'}">
+    </div>
+
   </div>
 </template>
 
 <script>
+  import VueBase64FileUpload from 'vue-base64-file-upload'
   export default {
     name: 'profile',
     props: ['reviews'],
@@ -88,12 +100,16 @@
           cntct: this.$store.state.pet.cntct,
           notes: this.$store.state.pet.notes
         },
-        selectedPet: ''
+        selectedPet: '',
+        customImageMaxSize: 3,
+        file: ''
+
       }
     },
     mounted() {
       this.getPets(this.user._id)
       this.averageRatings(this.reviews)
+      document.getElementsByClassName('js-test')[0].removeAttribute("disabled");
 
     },
     computed: {
@@ -105,6 +121,9 @@
       },
       pets() {
         return this.$store.state.pets
+      },
+      images() {
+        return this.$store.state.user.images
       }
     },
     methods: {
@@ -130,6 +149,26 @@
           out += rating
         }
         this.reviewValue = (Math.round(out / reviews.length))
+      },
+      upLoad() {
+        let imgData = {
+          file: this.file,
+          id: this.user._id
+        }
+        this.$store.dispatch('upLoad', imgData)
+      },
+
+      onFile(file) {
+        console.log(file); // file object
+      },
+
+      onLoad(dataUri) {
+        this.file = dataUri
+        console.log(dataUri); // data-uri string
+      },
+
+      onSizeExceeded(size) {
+        alert(`Image ${size}Mb size exceeds limits of ${this.customImageMaxSize}Mb!`);
       }
     },
     watch: {
@@ -142,6 +181,10 @@
           cntct: this.activePet.cntct,
           notes: this.activePet.notes
         }
+      },              
+      components: {
+        VueBase64FileUpload
+        }
       },
       activeUser: function () {
         this.userData = {
@@ -152,11 +195,16 @@
       }
     }
 
-  }
+  
 
 </script>
 
 <style>
-
+ .v1-image {
+   max-width: 200px;
+ }
+ .uploadedImage {
+   max-width: 200px;
+ }
 
 </style>

@@ -13,9 +13,7 @@ let reviewSchema = new Schema({
 })
 
 let imageSchema = new Schema({
-  name: { type: String },
-  size: { type: Number },
-  type: { type: String }
+  file: { type: String },
 
 })
 

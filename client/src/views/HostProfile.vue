@@ -17,17 +17,16 @@
           parties.</small>
       </div> <button type="submit" class="btn btn-light">Submit</button>
     </form>
+  </form>
     <h2>Upload file</h2>
     <div>
       <vue-base64-file-upload id="picture" class="v1" accept="image/png,image/jpeg" image-class="v1-image" input-class="v1-image js-test"
-        :max-size="customImageMaxSize" @size-exceeded="onSizeExceeded" @file="onFile" @load="onLoad" />
+        :max-size="customImageMaxSize" @size-exceeded="onSizeExceeded" @file="onFile" @load="onLoad" v-model="file"/><button @click="upLoad">Submit Photo</button>
     </div>
-    <button type="submit" class="btn btn-light">Submit</button>
-    </form>
-    <h2>Upload file</h2>
-    <div>
-      <vue-base64-file-upload id="picture" class="v1" accept="image/png,image/jpeg" image-class="v1-image" input-class="v1-image js-test"
-        :max-size="customImageMaxSize" @size-exceeded="onSizeExceeded" @file="onFile" @load="onLoad" />
+    <div v-for="image in images">
+      <div class="card">
+      <img class="uploadedImage" :src="image.file">
+      </div>
     </div>
     <router-link :to="{name: 'profile'}">My Muppet Babies</router-link :to="{name: 'profile'}">
   </div>
@@ -46,17 +45,24 @@
           price: this.$store.state.user.price,
           address: this.$store.state.user.address
         },
-        customImageMaxSize: 3
+        customImageMaxSize: 3,
+        file: ''
       }
     },
+
     mounted() {
       document.getElementsByClassName('js-test')[0].removeAttribute("disabled");
+      document.getElementsByClassName('js-test')[1].removeAttribute("disabled");
     },
     computed: {
       user() {
         return this.$store.state.user
+      },
+      images() {
+        return this.$store.state.user.images
       }
     },
+
     methods: {
       enterHostData() {
         this.hostData.price = parseInt(this.hostData.price)
@@ -65,11 +71,20 @@
         this.$store.dispatch('updateHost', this.hostData)
       },
 
+      upLoad() {
+        let imgData = {
+          file: this.file,
+          id: this.user._id
+        }
+        this.$store.dispatch('upLoad', imgData)
+      },
+
       onFile(file) {
         console.log(file); // file object
       },
 
       onLoad(dataUri) {
+        this.file = dataUri
         console.log(dataUri); // data-uri string
       },
 
@@ -96,44 +111,11 @@
 
 </script>
 
-
-},
 <style>
+ .v1-image {
+   max-width: 200px;
+ }
+ .uploadedImage {
+   max-width: 200px;
+ }
 </style>
-<!-- <div class="input_field">
-        <input type="file" @change="processFile($event)">
-      </div> -->
-<!-- <form @submit.prevent="onUpload">
-        <div class="form-group">
-          <label for="imageFile">Images</label>
-          <input type="file" @change="onFileSelected" class="form-control-file" id="imageFile" aria-describedby="imageFileText">
-          <small id="imageFileText" class="form-text text-muted">Upload up to 7 pictures.</small>
-          <button type="submit" class="btn btn-light">Upload</button>
-        </div>
-      </form> -->
-
-<!-- <div>
-        <image></image>
-      </div> -->
-
-<!-- <div v-for="img in images">
-          <img src="" >
-        </div> -->
-// CLOUDINARY
-// processFile(event) {
-// let file = event.target.files[0];
-// this.$store.dispatch('imageUpload', file)
-// }
-
-// onFileSelected(event) {
-// this.selectedFile = event.target.files[0]
-// },
-
-// onUpload() {
-// const fd = new FormData();
-// fd.append('image', this.selectedFile)
-
-// let imgFile = {userId:this.user._id, file:this.selectedFile}
-// console.log(imgFile)
-// this.$store.dispatch ('onUpload', imgFile)
-// }

@@ -88,7 +88,6 @@
 
     mounted() {
       document.getElementsByClassName('js-test')[0].removeAttribute("disabled");
-      document.getElementsByClassName('js-test')[1].removeAttribute("disabled");
     },
     computed: {
       user() {

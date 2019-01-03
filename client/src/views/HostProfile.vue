@@ -18,7 +18,8 @@
       </div> <button type="submit" class="btn btn-light">Submit</button>
     </form>
   </form>
-    <h2>Upload file</h2>
+
+    <h4>Upload file</h4>
     <div>
       <vue-base64-file-upload id="picture" class="v1" accept="image/png,image/jpeg" image-class="v1-image" input-class="v1-image js-test"
         :max-size="customImageMaxSize" @size-exceeded="onSizeExceeded" @file="onFile" @load="onLoad" v-model="file"/><button @click="upLoad">Submit Photo</button>
@@ -30,6 +31,7 @@
     </div>
     <router-link :to="{name: 'profile'}">My Muppet Babies</router-link :to="{name: 'profile'}">
   </div>
+
   </div>
 </template>
 
@@ -103,9 +105,6 @@
       components: {
         VueBase64FileUpload
       }
-    },
-    components: {
-      VueBase64FileUpload
     }
   }
 

@@ -52,5 +52,19 @@ router.put('/:petId', (req, res, next) =>
       next()
     })
 )
+//post a pet reviews
+
+router.post('/:petId/reviews', (req, res, next) => {
+  Pets.findById(req.params.petId)
+    .then(pet => {
+      pet.reviews.push(req.body)
+      pet.save(err => {
+        if (err) {
+          next(err)
+        }
+        res.send(pet)
+      })
+    })
+})
 
 module.exports = router

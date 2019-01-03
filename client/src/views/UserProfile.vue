@@ -1,7 +1,7 @@
 <template>
   <div class="profile">
     <form @submit.prevent="enterUserData">
-      <legend>About Me</legend>
+      <legend class="d-flex justify-content-center">About Me</legend>
       <div class="form-group">
         <label for="imageFile">Images</label>
         <input type="file" class="form-control-file" id="imageFile" aria-describedby="imageFileText">
@@ -27,7 +27,7 @@
       </span>
       <button type="submit" class="btn btn-light">Submit</button>
     </form>
-    <legend>My Fur Babies</legend>
+    <legend class="d-flex justify-content-center">My Fur Babies</legend>
 
     <q-tabs v-model="selectedPet">
       <q-tab slot="title" label="New Pet"></q-tab>
@@ -40,6 +40,7 @@
 
 
     <form @submit.prevent="enterPetData">
+
       <v-rating readonly v-model="reviewValue" color="yellow darken-3"></v-rating>
 
       <div class="form-group">

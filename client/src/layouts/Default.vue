@@ -2,9 +2,9 @@
   <q-layout view="lHh Lpr lff">
     <q-layout-header>
       <q-toolbar color="primary" :glossy="$q.theme === 'mat'" :inverted="$q.theme === 'ios'">
-        <q-btn flat dense round @click="leftDrawerOpen = !leftDrawerOpen" aria-label="Menu" icon="menu" />
+        <q-btn flat @click="leftDrawerOpen = !leftDrawerOpen" aria-label="Menu" icon="menu" />
 
-        <q-toolbar-title>
+        <q-toolbar-title class="absolute-center">
           P<i class="fas fa-paw"></i>wBnB
         </q-toolbar-title>
       </q-toolbar>
@@ -25,8 +25,9 @@
             </q-item>
           </q-list>
           <q-item-separator />
-          <q-item @click="logout">
-            <router-link :to="{name: 'home'}">Logout</router-link>
+          <q-item >
+            <button class="btn btn-primary" @click="logout">
+            <router-link :to="{name: 'home'}">Logout</router-link></button>
           </q-item>
           <q-item v-if="!user.isHost">
             <router-link :to="{name: 'profile'}">Profile Page</router-link>

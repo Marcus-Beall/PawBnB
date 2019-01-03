@@ -15,21 +15,32 @@
         <input type="text" id="address" v-model="hostData.address" class="form-control" placeholder="" aria-describedby="addressText">
         <small id="addressText" class="text-muted">Will not be shown to anyone unless a booking is accepted by both
           parties.</small>
-      </div>
-      <button type="submit" class="btn btn-light">Submit</button>
+        <<<<<<< HEAD </div> <button type="submit" class="btn btn-light">Submit</button>
     </form>
     <h2>Upload file</h2>
     <div>
       <vue-base64-file-upload id="picture" class="v1" accept="image/png,image/jpeg" image-class="v1-image" input-class="v1-image js-test"
         :max-size="customImageMaxSize" @size-exceeded="onSizeExceeded" @file="onFile" @load="onLoad" />
     </div>
+    =======
+  </div>
+  <button type="submit" class="btn btn-light">Submit</button>
+  </form>
+
+  <h2>Upload file</h2>
+  <div>
+    <vue-base64-file-upload id="picture" class="v1" accept="image/png,image/jpeg" image-class="v1-image" input-class="v1-image js-test"
+      :max-size="customImageMaxSize" @size-exceeded="onSizeExceeded" @file="onFile" @load="onLoad" />
+  </div>
+
+  >>>>>>> aae6c6010dd8b26f3e3e2c010795988fb9ee12f1
 
 
-    <!-- <div class="input_field">
+  <!-- <div class="input_field">
         <input type="file" @change="processFile($event)">
       </div> -->
 
-    <!-- <form @submit.prevent="onUpload">
+  <!-- <form @submit.prevent="onUpload">
         <div class="form-group">
           <label for="imageFile">Images</label>
           <input type="file" @change="onFileSelected" class="form-control-file" id="imageFile" aria-describedby="imageFileText">
@@ -38,14 +49,14 @@
         </div>
       </form> -->
 
-    <!-- <div>
+  <!-- <div>
         <image></image>
       </div> -->
 
-    <!-- <div v-for="img in images">
+  <!-- <div v-for="img in images">
           <img src="" >
         </div> -->
-    <router-link :to="{name: 'profile'}">My Muppet Babies</router-link :to="{name: 'profile'}">
+  <router-link :to="{name: 'profile'}">My Muppet Babies</router-link :to="{name: 'profile'}">
   </div>
 </template>
 
@@ -99,6 +110,9 @@
           price: this.$store.state.user.price,
           address: this.$store.state.user.address
         }
+      },
+      components: {
+        VueBase64FileUpload
       }
     },
     components: {
@@ -128,7 +142,4 @@
 // }
 },
 <style>
-  .v1 {
-    size: 200px
-  }
 </style>

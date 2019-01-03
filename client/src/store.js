@@ -25,7 +25,8 @@ export default new Vuex.Store({
     pets: [],
     results: [],
     query: [],
-    activeResult: {}
+    activeResult: {},
+    booking: {}
   },
   mutations: {
     setUser(state, user) {
@@ -50,6 +51,9 @@ export default new Vuex.Store({
       for (let i = start; i <= end; i++) {
         state.query.push(i);
       }
+    },
+    setBooking(state, booking) {
+      state.booking = booking
     }
   },
   actions: {
@@ -113,32 +117,21 @@ export default new Vuex.Store({
         })
     },
 
-    // CLOUDINARY
-    // imageUpload({ commit }, file) {
-    //   const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/dozqrms2v/image/upload'
-    //   const CLOUDINARY_PRESET = 'puf4oj1x'
+    //BOOKING
+    startBooking({ commit, dispatch }, booking) {
+      commit('setBooking', booking)
+    },
+    makeBooking({ commit, dispatch }, booking) {
+      api.post()
+      commit('')
+    },
 
-    //   let formData = new FormData();
-    //   formData.append('file', file)
-    //   formData.append('upload_preset', CLOUDINARY_PRESET)
-
-    //   api.post(CLOUDINARY_URL, formData, {
-    //     headers: {
-    //       'Content-type': 'application/x-www-form-urlencoded'
-    //     }
-    //   })
-    //     .then(response => {
-    //       console.log(response)
-    //     })
-    // },
-          
-
-    // onUpload({ commit, dispatch }, imgFile) {
-    //   api.post('hosts/' + imgFile.userId + '/img', imgFile.file)
-    //     .then(res => {
-    //       commit('setUser', res.data)
-    //     })
-    // },
+    onUpload({ commit, dispatch }, imgFile) {
+      api.post('hosts/' + imgFile.userId + '/img', imgFile.file)
+        .then(res => {
+          commit('setUser', res.data)
+        })
+    },
 
     //Pet Data
     createPet({ commit, dispatch }, petData) {

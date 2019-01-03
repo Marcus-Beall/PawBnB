@@ -49,9 +49,10 @@
         <image></image>
       </div> -->
 
-        <!-- <div v-for="img in images">
+    <!-- <div v-for="img in images">
           <img src="" >
         </div> -->
+    <router-link :to="{name: 'profile'}">My Muppet Babies</router-link :to="{name: 'profile'}">
   </div>
 </template>
 

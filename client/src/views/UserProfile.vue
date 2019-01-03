@@ -1,7 +1,7 @@
 <template>
   <div class="profile">
     <form @submit.prevent="enterUserData">
-      <legend>About Me</legend>
+      <legend class="d-flex justify-content-center">About Me</legend>
       <div class="form-group">
         <label for="imageFile">Images</label>
         <input type="file" class="form-control-file" id="imageFile" aria-describedby="imageFileText">
@@ -27,10 +27,11 @@
       </span>
       <button type="submit" class="btn btn-light">Submit</button>
     </form>
-    <legend>My Fur Babies</legend>
+    <legend class="d-flex justify-content-center">My Fur Babies</legend>
 
     <q-tabs v-model="selectedPet">
-      <q-tab v-for="pet in pets" slot="title" @click="setPet(pet);  activePet = pet" label="New Pet"></q-tab>
+      <q-tab slot="title" label="New Pet"></q-tab>
+      <q-tab v-for="pet in pets" slot="title" @click="setPet(pet);  activePet = pet" :label="pet.name"></q-tab>
       <span>
         <q-tab @click="setPet(pet)" slot="title" :label="pet.name"></q-tab>
       </span>
@@ -39,6 +40,9 @@
 
 
     <form @submit.prevent="enterPetData">
+
+      <v-rating readonly v-model="reviewValue" color="yellow darken-3"></v-rating>
+
       <div class="form-group">
         <label for="pet-name">Pet Name</label>
         <input type="text" id="pet-name" class="form-control" v-model="petData.name" />
@@ -67,8 +71,10 @@
 <script>
   export default {
     name: 'profile',
+    props: ['reviews'],
     data() {
       return {
+        reviewValue: 0,
         userData: {
           description: this.$store.state.user.description,
           price: this.$store.state.user.price,
@@ -87,6 +93,8 @@
     },
     mounted() {
       this.getPets(this.user._id)
+      this.averageRatings(this.reviews)
+
     },
     computed: {
       user() {
@@ -114,6 +122,14 @@
       },
       setPet(pet) {
         this.$store.dispatch('setPet', pet)
+      },
+      averageRatings(reviews) {
+        let out = 0
+        for (let i = 0; i < reviews.length; i++) {
+          let rating = reviews[i].ratings;
+          out += rating
+        }
+        this.reviewValue = (Math.round(out / reviews.length))
       }
     },
     watch: {

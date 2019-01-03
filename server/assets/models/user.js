@@ -22,6 +22,7 @@ let imageSchema = new Schema({
 let unavailableSchema = new Schema({
   day: { type: Number }
 })
+
 let schema = new Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
@@ -34,10 +35,14 @@ let schema = new Schema({
   description: { type: String },
   price: { type: Number },
   address: { type: String },
-  unavailable: []
-}, {
+  unavailable: [],
+  chats: {
+    type: ['Chat'],
+    default: undefined
+  }, {
     usePushEach: true
-  })
+  }
+})
 
 
 

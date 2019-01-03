@@ -1,9 +1,11 @@
 let router = require('express').Router()
 let Hosts = require('../models/user')
 
-//GET
-router.get('/:zipcode', (req, res, next) => {
-  Hosts.find({ isHost: true, zipcode: req.params.zipcode })
+
+
+//UPDATE A HOST
+router.put('/:hostId', (req, res, next) => {
+  Hosts.findByIdAndUpdate(req.params.hostId, { new: true })
     .then(data => {
       res.send(data)
     })
@@ -12,6 +14,20 @@ router.get('/:zipcode', (req, res, next) => {
       next()
     })
 })
+
+
+//GET BY ZIP AND AVAILABILITY
+router.get('/:zipcode', (req, res, next) => {
+  Hosts.find({ isHost: true, zipcode: req.params.zipcodse, unavailable: req.params.unavailable })
+    .then(data => {
+      res.send(data)
+    })
+    .catch(err => {
+      console.log(err)
+      next()
+    })
+})
+
 
 //GET SPECIFIC USER
 router.get('/:id', (req, res, next) => {

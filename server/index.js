@@ -1,8 +1,9 @@
 var express = require('express')
 var bp = require('body-parser')
 var server = express()
-var server = require('http').Server(app)
-var io = require('socket.io')(server)
+var app = require('express')();
+var serve = require('http').Server(app)
+var io = require('socket.io')(serve)
 var cors = require('cors')
 var port = process.env.PORT || 3000
 

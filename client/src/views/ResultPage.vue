@@ -5,7 +5,7 @@
     <h3>Description</h3>
     <p>{{result.description}}</p>
     <h4>${{result.price}}</h4>
-    <button type="button" name="book" id="book" class="btn btn-primary" btn-lg btn-block>Book</button>
+    <button type="button" name="book" id="book" class="btn btn-primary" btn-lg btn-block @click="book">Book</button>
     <form @submit="addReview">
       <input type="textarea" v-model="review.reviewBody.content" id="review" placeholder="Add a review here...">
       <v-rating v-model="review.reviewBody.ratings"></v-rating>
@@ -32,6 +32,10 @@
             ratings: 1,
             content: ''
           }
+        },
+        booking: {
+          userId: this.user._id,
+          userEmail: this.user.email
         }
       }
     },
@@ -41,12 +45,20 @@
       },
       reviews() {
         return this.$store.state.activeResult.reviews
+      },
+      user() {
+        return this.$store.state.user
       }
     },
     methods: {
       addReview() {
         this.review.hostId = this.result._id
         this.$store.dispatch('newReview', this.review)
+      },
+      book() {
+        this.booking.hostEmail = this.result.email,
+          this.booking.hostId = this.result._id,
+          this.$store.dispatch('makeBooking', this.booking)
       }
     }
   }

@@ -24,7 +24,8 @@ export default new Vuex.Store({
     pet: {},
     results: [],
     query: [],
-    activeResult: {}
+    activeResult: {},
+    booking: {}
   },
   mutations: {
     setUser(state, user) {
@@ -43,6 +44,9 @@ export default new Vuex.Store({
       for (let i = start; i <= end; i++) {
         state.query.push(i);
       }
+    },
+    setBooking(state, booking) {
+      state.booking = booking
     }
   },
   actions: {
@@ -67,9 +71,9 @@ export default new Vuex.Store({
     logout({ commit, dispatch }) {
       auth.delete('logout')
         .then(res =>
-        commit('setUser', res.data))
+          commit('setUser', res.data))
     },
-    
+
     //Search
     searchHosts({ commit, dispatch }, query) {
       api.get('hosts/' + query.zipcode)
@@ -105,6 +109,15 @@ export default new Vuex.Store({
         .then(res => {
           commit('setUser', res.data)
         })
+    },
+
+    //BOOKING
+    startBooking({ commit, dispatch }, booking) {
+      commit('setBooking', booking)
+    },
+    makeBooking({ commit, dispatch }, booking) {
+      api.post()
+      commit('')
     }
   }
 })

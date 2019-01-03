@@ -1,6 +1,8 @@
 var express = require('express')
 var bp = require('body-parser')
 var server = express()
+var server = require('http').Server(app)
+var io = require('socket.io')(server)
 var cors = require('cors')
 var port = process.env.PORT || 3000
 
@@ -28,6 +30,8 @@ let auth = require('./assets/auth/routes')
 server.use(auth.session)
 server.use(auth.router)
 
+let Socket = require("./assets/router/chats")
+let socket = new Socket(io)
 
 let userRoutes = require('./assets/router/users')
 server.use('/api/users', userRoutes)

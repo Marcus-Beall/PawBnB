@@ -15,48 +15,22 @@
         <input type="text" id="address" v-model="hostData.address" class="form-control" placeholder="" aria-describedby="addressText">
         <small id="addressText" class="text-muted">Will not be shown to anyone unless a booking is accepted by both
           parties.</small>
-        <<<<<<< HEAD </div> <button type="submit" class="btn btn-light">Submit</button>
+      </div> <button type="submit" class="btn btn-light">Submit</button>
     </form>
     <h2>Upload file</h2>
     <div>
       <vue-base64-file-upload id="picture" class="v1" accept="image/png,image/jpeg" image-class="v1-image" input-class="v1-image js-test"
         :max-size="customImageMaxSize" @size-exceeded="onSizeExceeded" @file="onFile" @load="onLoad" />
     </div>
-    =======
+    <button type="submit" class="btn btn-light">Submit</button>
+    </form>
+    <h2>Upload file</h2>
+    <div>
+      <vue-base64-file-upload id="picture" class="v1" accept="image/png,image/jpeg" image-class="v1-image" input-class="v1-image js-test"
+        :max-size="customImageMaxSize" @size-exceeded="onSizeExceeded" @file="onFile" @load="onLoad" />
+    </div>
+    <router-link :to="{name: 'profile'}">My Muppet Babies</router-link :to="{name: 'profile'}">
   </div>
-  <button type="submit" class="btn btn-light">Submit</button>
-  </form>
-
-  <h2>Upload file</h2>
-  <div>
-    <vue-base64-file-upload id="picture" class="v1" accept="image/png,image/jpeg" image-class="v1-image" input-class="v1-image js-test"
-      :max-size="customImageMaxSize" @size-exceeded="onSizeExceeded" @file="onFile" @load="onLoad" />
-  </div>
-
-  >>>>>>> aae6c6010dd8b26f3e3e2c010795988fb9ee12f1
-
-
-  <!-- <div class="input_field">
-        <input type="file" @change="processFile($event)">
-      </div> -->
-
-  <!-- <form @submit.prevent="onUpload">
-        <div class="form-group">
-          <label for="imageFile">Images</label>
-          <input type="file" @change="onFileSelected" class="form-control-file" id="imageFile" aria-describedby="imageFileText">
-          <small id="imageFileText" class="form-text text-muted">Upload up to 7 pictures.</small>
-          <button type="submit" class="btn btn-light">Upload</button>
-        </div>
-      </form> -->
-
-  <!-- <div>
-        <image></image>
-      </div> -->
-
-  <!-- <div v-for="img in images">
-          <img src="" >
-        </div> -->
-  <router-link :to="{name: 'profile'}">My Muppet Babies</router-link :to="{name: 'profile'}">
   </div>
 </template>
 
@@ -122,6 +96,29 @@
 
 </script>
 
+
+},
+<style>
+</style>
+<!-- <div class="input_field">
+        <input type="file" @change="processFile($event)">
+      </div> -->
+<!-- <form @submit.prevent="onUpload">
+        <div class="form-group">
+          <label for="imageFile">Images</label>
+          <input type="file" @change="onFileSelected" class="form-control-file" id="imageFile" aria-describedby="imageFileText">
+          <small id="imageFileText" class="form-text text-muted">Upload up to 7 pictures.</small>
+          <button type="submit" class="btn btn-light">Upload</button>
+        </div>
+      </form> -->
+
+<!-- <div>
+        <image></image>
+      </div> -->
+
+<!-- <div v-for="img in images">
+          <img src="" >
+        </div> -->
 // CLOUDINARY
 // processFile(event) {
 // let file = event.target.files[0];
@@ -140,6 +137,3 @@
 // console.log(imgFile)
 // this.$store.dispatch ('onUpload', imgFile)
 // }
-},
-<style>
-</style>

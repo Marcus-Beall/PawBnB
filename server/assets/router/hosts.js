@@ -70,7 +70,12 @@ router.delete('/:id/img/:i', (req, res, next) => {
   Hosts.findById(req.params.id)
     .then(host => {
       host.images.splice(req.params.i, 1)
-      res.send(host)
+      host.save(err => {
+        if (err) {
+          next(err)
+        }
+        res.send(host)
+      })
     })
     .catch(err => {
       console.log(err)

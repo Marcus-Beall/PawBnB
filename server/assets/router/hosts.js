@@ -5,7 +5,7 @@ let Hosts = require('../models/user')
 
 //UPDATE A HOST
 router.put('/:hostId', (req, res, next) => {
-  Hosts.findByIdAndUpdate(req.params.hostId, { new: true })
+  Hosts.findByIdAndUpdate(req.params.hostId, req.body, { new: true })
     .then(data => {
       res.send(data)
     })
@@ -63,6 +63,23 @@ router.post('/:id/img', (req, res, next) => {
         }
         res.send(host)
       })
+    })
+})
+
+router.delete('/:id/img/:i', (req, res, next) => {
+  Hosts.findById(req.params.id)
+    .then(host => {
+      host.images.splice(req.params.i, 1)
+      host.save(err => {
+        if (err) {
+          next(err)
+        }
+        res.send(host)
+      })
+    })
+    .catch(err => {
+      console.log(err)
+      next()
     })
 })
 

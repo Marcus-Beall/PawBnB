@@ -27,7 +27,7 @@ router.get('/:id', (req, res, next) => {
 
 //CHANGE HOST DATA
 router.put('/:id', (req, res, next) => {
-  Hosts.findByIdAndUpdate(req.params.id, {images: req.body}, { new: true })
+  Hosts.findByIdAndUpdate(req.params.id, { images: req.body }, { new: true })
     .then(data => {
       res.send(data)
     })
@@ -43,11 +43,23 @@ router.post('/:id/img', (req, res, next) => {
       host.images.push(req.body)
       host.save(err => {
         if (err) {
-          next (err)
+          next(err)
         }
         res.send(host)
-      })  
-  })
+      })
+    })
+})
+
+router.delete('/:id/img/:i', (req, res, next) => {
+  Hosts.findById(req.params.id)
+    .then(host => {
+      host.images.splice(req.params.i, 1)
+      res.send(host)
+    })
+    .catch(err => {
+      console.log(err)
+      next()
+    })
 })
 
 

@@ -17,16 +17,21 @@
           parties.</small>
       </div> <button type="submit" class="btn btn-light">Submit</button>
     </form>
-  </form>
+    </form>
     <h2>Upload file</h2>
     <div>
       <vue-base64-file-upload id="picture" class="v1" accept="image/png,image/jpeg" image-class="v1-image" input-class="v1-image js-test"
-        :max-size="customImageMaxSize" @size-exceeded="onSizeExceeded" @file="onFile" @load="onLoad" v-model="file"/><button @click="upLoad">Submit Photo</button>
+        :max-size="customImageMaxSize" @size-exceeded="onSizeExceeded" @file="onFile" @load="onLoad" v-model="file" /><button
+        @click="upLoad">Submit Photo</button>
     </div>
-    <div v-for="image in images">
-      <div class="card">
-      <img class="uploadedImage" :src="image.file">
-      </div>
+    <div v-for="(image, i) in images">
+      <q-card>
+        <q-card-media class="deleteIcon">
+          <i class="fa fa-laptop" @click="deleteImage(image._id, i)" aria-hidden="true" />
+          <img class="uploadedImage" :src="image.file">
+        </q-card-media>
+      </q-card>
+
     </div>
     <router-link :to="{name: 'profile'}">My Muppet Babies</router-link :to="{name: 'profile'}">
   </div>
@@ -90,8 +95,18 @@
 
       onSizeExceeded(size) {
         alert(`Image ${size}Mb size exceeds limits of ${this.customImageMaxSize}Mb!`);
+      },
+
+      deleteImage(imageId, index) {
+        let imgData = {
+          index: index,
+          userId: this.user._id,
+          imgId: imageId
+        }
+        this.$store.dispatch('deleteUserImage', imgData)
       }
     },
+
     watch: {
       activeUser: function () {
         this.hostData = {
@@ -112,10 +127,19 @@
 </script>
 
 <style>
- .v1-image {
-   max-width: 200px;
- }
- .uploadedImage {
-   max-width: 200px;
- }
+  .v1-image {
+    max-width: 200px;
+  }
+
+  .deleteIcon {
+    opacity: 0;
+  }
+
+  .deleteIcon:hover {
+    opacity: 1;
+  }
+
+  .uploadedImage {
+    max-width: 200px;
+  }
 </style>

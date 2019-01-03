@@ -84,7 +84,7 @@ export default new Vuex.Store({
     logout({ commit, dispatch }) {
       auth.delete('logout')
         .then(res =>
-        commit('setUser', res.data))
+          commit('setUser', res.data))
     },
 
     //Search
@@ -123,11 +123,11 @@ export default new Vuex.Store({
         })
     },
 
-    upLoad({commit, dispatch}, imgData) {
+    upLoad({ commit, dispatch }, imgData) {
       imgApi.post('hosts/' + imgData.id + '/img', imgData)
         .then(res => {
-        commit('setUser', res.data)
-      })
+          commit('setUser', res.data)
+        })
     },
 
     //BOOKING
@@ -176,6 +176,11 @@ export default new Vuex.Store({
         .then(res => {
           commit('setPet', res.data)
         })
+    },
+    deleteUserImage({ commit, dispatch }, imgData) {
+      api.delete('hosts/' + imgData.userId + '/img/' + imgData.index)
+        .then(res =>
+          commit('setUser', res.data))
     }
   }
 })

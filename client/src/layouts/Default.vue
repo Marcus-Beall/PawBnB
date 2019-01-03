@@ -5,7 +5,7 @@
         <q-btn flat dense round @click="leftDrawerOpen = !leftDrawerOpen" aria-label="Menu" icon="menu" />
 
         <q-toolbar-title>
-          P<i class="fas fa-paw" />wBnB
+          P<i class="fas fa-paw"></i>wBnB
         </q-toolbar-title>
       </q-toolbar>
     </q-layout-header>
@@ -25,13 +25,15 @@
             </q-item>
           </q-list>
           <q-item-separator />
-          <q-item @click="logout"><router-link :to="{name: 'home'}">Logout</router-link></q-item>
+          <q-item @click="logout">
+            <router-link :to="{name: 'home'}">Logout</router-link>
+          </q-item>
           <q-item v-if="!user.isHost">
             <router-link :to="{name: 'profile'}">Profile Page</router-link>
           </q-item>
           <q-item v-else>
             <router-link :to="{name: 'host'}">Profile Page</router-link>
-         </q-item>
+          </q-item>
 
           <q-item v-if="!user.isHost">
             <router-link :to="{name: 'host'}">Host a Dog</router-link>
@@ -60,7 +62,7 @@
     </q-page-container>
 
     <q-layout-footer>
-      <div class="feet col-12 d-flex justify-content-center">
+      <div class="feet absolute-center">
         <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-square"></i></a>
         <a href="https://twitter.com/login?lang=en" target="_blank"><i class="fab fa-twitter-square"></i></a>
         <a href="https://www.instagram.com/accounts/login/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>

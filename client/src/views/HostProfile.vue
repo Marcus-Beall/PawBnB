@@ -22,14 +22,37 @@
     <h4>Upload file</h4>
     <div>
       <vue-base64-file-upload id="picture" class="v1" accept="image/png,image/jpeg" image-class="v1-image" input-class="v1-image js-test"
-        :max-size="customImageMaxSize" @size-exceeded="onSizeExceeded" @file="onFile" @load="onLoad" v-model="file"/><button @click="upLoad">Submit Photo</button>
+        :max-size="customImageMaxSize" @size-exceeded="onSizeExceeded" @file="onFile" @load="onLoad" v-model="file" /><button
+        @click="upLoad">Submit Photo</button>
     </div>
     <div v-for="image in images">
       <div class="card">
-      <img class="uploadedImage" :src="image.file">
+        <img class="uploadedImage" :src="image.file">
       </div>
     </div>
-    <router-link :to="{name: 'profile'}">My Muppet Babies</router-link :to="{name: 'profile'}">
+
+    <legend>Select Unavailable Dates</legend>
+    <form class="px-2" @submit.prevent="setUnavailable">
+      <div class="form-group">
+        <label class="control-label" for="date">From</label>
+        <input v-model="unavailable.startmonth" class="form-control" id="start-month" name="start-month" placeholder="MM"
+          type="number" />
+        <input v-model="unavailable.startday" class="form-control" id="start-day" name="start-day" placeholder="DD"
+          type="number" />
+        <input class="form-control" id="start-year" name="start-year" placeholder="YY" type="number" />
+        <label class="control-label" for="date">To</label>
+        <input v-model="unavailable.endmonth" class="form-control" id="end-month" name="end-month" placeholder="MM"
+          type="number" />
+        <input v-model="unavailable.endday" class="form-control" id="end-day" name="end-day" placeholder="DD" type="number" />
+        <input class="form-control" id="end-year" name="end-year" placeholder="YY" type="number" />
+        <button class="btn btn-primary" type="submit" name="submit">Set as Unavailable</button>
+      </div>
+
+    </form>
+
+    <router-link :to="{name: 'profile'}">
+      Go to My Pets
+    </router-link :to="{name: 'profile'}">
   </div>
 
   </div>
@@ -42,6 +65,12 @@
     name: 'host',
     data() {
       return {
+        unavailable: {
+          startmonth: "",
+          startday: "",
+          endmonth: "",
+          endday: ""
+        },
         hostData: {
           description: this.$store.state.user.description,
           price: this.$store.state.user.price,
@@ -66,6 +95,9 @@
     },
 
     methods: {
+      setUnavailable() {
+        this.$store.dispatch('setUnavailable')
+      },
       enterHostData() {
         this.hostData.price = parseInt(this.hostData.price)
         this.hostData.hostId = this.user._id
@@ -111,10 +143,11 @@
 </script>
 
 <style>
- .v1-image {
-   max-width: 200px;
- }
- .uploadedImage {
-   max-width: 200px;
- }
+  .v1-image {
+    max-width: 200px;
+  }
+
+  .uploadedImage {
+    max-width: 200px;
+  }
 </style>

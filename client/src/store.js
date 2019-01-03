@@ -32,7 +32,8 @@ export default new Vuex.Store({
     results: [],
     query: [],
     activeResult: {},
-    booking: {}
+    booking: {},
+    unavailable: []
   },
   mutations: {
     setUser(state, user) {
@@ -50,6 +51,17 @@ export default new Vuex.Store({
     setActive(state, result) {
       state.activeResult = result
     },
+
+
+    unavailability(state, unavailable) {
+      state.unavailable = []
+      let start = parseInt(unavailable.startday) * parseInt(unavailable.startmonth) + (30 * (unavailable.startmonth - 1))
+      let end = parseInt(unavailable.endday) * parseInt(unavailable.endmonth) + (30 * (unavailable.endmonth - 1))
+      for (let i = start; i <= end; i++) {
+        state.unavailable.push(i);
+      }
+    },
+
     queryResults(state, query) {
       state.query = []
       let start = parseInt(query.startday) * parseInt(query.startmonth) + (30 * (query.startmonth - 1))
@@ -84,7 +96,18 @@ export default new Vuex.Store({
     logout({ commit, dispatch }) {
       auth.delete('logout')
         .then(res =>
-        commit('setUser', res.data))
+          commit('setUser', res.data))
+    },
+
+    //set unavailability
+
+    setUnavailable({ commit, dispatch }, unavailable) {
+      api.put('hosts/')
+        .then(res => {
+          let unavailableDates = res.data
+          commit('setUnavailable', unavailable)
+        }
+        )
     },
 
     //Search

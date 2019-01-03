@@ -16,7 +16,7 @@ let imageSchema = new Schema({
   name: { type: String },
   size: { type: Number },
   type: { type: String }
-  
+
 })
 
 let unavailableSchema = new Schema({
@@ -39,10 +39,12 @@ let schema = new Schema({
   chats: {
     type: ['Chat'],
     default: undefined
-  }, {
+  }
+},
+  {
     usePushEach: true
   }
-})
+)
 
 
 

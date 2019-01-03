@@ -11,8 +11,14 @@
 </template>
 
 <script>
+import VueBase64FileUpload from 'vue-base64-file-upload';
+  
   export default {
     name: 'image',
+    components: {
+      VueBase64FileUpload,
+      Image
+    },
     data() {
       return {
         customImageMaxSize: 3 //megabyte

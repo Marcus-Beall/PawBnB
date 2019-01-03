@@ -18,6 +18,7 @@
         </div>
         <button type="submit" class="btn btn-light">Submit</button>
       </form>
+
       <h2>Upload file</h2>
         <div>
           <vue-base64-file-upload id="picture" 
@@ -99,7 +100,6 @@ import VueBase64FileUpload from 'vue-base64-file-upload'
       alert(`Image ${size}Mb size exceeds limits of ${this.customImageMaxSize}Mb!`);
         }
       },
-
       components: {
         VueBase64FileUpload
       }
@@ -128,7 +128,7 @@ import VueBase64FileUpload from 'vue-base64-file-upload'
   },
 <style>
     .v1 {
-      size: 200px
+      
     }    
         
 </style>

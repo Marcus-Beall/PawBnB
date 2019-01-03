@@ -25,8 +25,9 @@
             </q-item>
           </q-list>
           <q-item-separator />
-          <q-item @click="logout">
-            <router-link :to="{name: 'home'}">Logout</router-link>
+          <q-item >
+            <button class="btn btn-primary" @click="logout">
+            <router-link :to="{name: 'home'}">Logout</router-link></button>
           </q-item>
           <q-item v-if="!user.isHost">
             <router-link :to="{name: 'profile'}">Profile Page</router-link>

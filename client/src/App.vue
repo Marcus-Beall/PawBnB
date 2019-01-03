@@ -10,6 +10,9 @@
     components: {
       navi,
       feet
+    },
+    created() {
+      this.$store.dispatch('authenticate')
     }
   }
 

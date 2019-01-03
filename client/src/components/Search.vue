@@ -18,7 +18,7 @@
           <input v-model="query.endmonth" class="form-control" id="end-month" name="end-month" placeholder="MM" type="number" />
           <input v-model="query.endday" class="form-control" id="end-day" name="end-day" placeholder="DD" type="number" />
           <input class="form-control" id="end-year" name="end-year" placeholder="YY" type="number" />
-          <button class="btn" type="submit" name="submit">Search</button>
+          <q-btn color="primary" type="submit" name="submit">Search</q-btn>
         </div>
       </form>
     </div>

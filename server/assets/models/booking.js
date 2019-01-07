@@ -1,6 +1,7 @@
 let mongoose = require('mongoose')
 let Schema = mongoose.Schema
 let ObjectId = Schema.Types.ObjectId
+let schemaName = 'Booking'
 
 let schema = new Schema({
   hostEmail: { type: String, required: true, unique: true },
@@ -11,3 +12,5 @@ let schema = new Schema({
   pets: ['Pet'],
   dates: []
 })
+
+module.exports = mongoose.model(schemaName, schema)

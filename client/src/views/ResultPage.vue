@@ -32,10 +32,6 @@
             ratings: 1,
             content: ''
           }
-        },
-        booking: {
-          userId: this.user._id,
-          userEmail: this.user.email
         }
       }
     },
@@ -56,9 +52,13 @@
         this.$store.dispatch('newReview', this.review)
       },
       book() {
-        this.booking.hostEmail = this.result.email,
-          this.booking.hostId = this.result._id,
-          this.$store.dispatch('makeBooking', this.booking)
+        let playload = {
+          hostEmail: this.result.email,
+          hostId: this.result._id,
+          userId: this.user._id,
+          userEmail: this.user.email
+        }
+        this.$store.dispatch('makeBooking', payload)
       }
     }
   }

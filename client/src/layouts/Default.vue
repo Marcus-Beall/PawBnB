@@ -39,7 +39,7 @@
           </q-item>
 
           <q-item v-if="user.isHost">
-            <router-link :to="{name: 'boooking'}">
+            <router-link :to="{name: 'bookings'}">
               </router-link:to> Booking Requests</router-link>
           </q-item>
 

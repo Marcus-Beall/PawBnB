@@ -98,7 +98,8 @@
           userEmail: this.user.email,
           dates: dates
         }
-        console.log(dates)
+        let formattedString = date.formatDate(new Date(2019, 0, (dates[2])), 'ddd-MMM-DD')
+        console.log(formattedString)
         // this.$store.dispatch('makeBooking', payload)
       }
     }

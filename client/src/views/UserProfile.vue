@@ -23,7 +23,7 @@
       </span>
       <button type="submit" class="btn btn-light">Submit</button>
     </form>
-    <legend class="d-flex justify-content-center">My Fur Babies</legend>
+    <legend v-if="isHost" class="d-flex justify-content-center">Go to My Pets</legend>
 
     <q-tabs v-model="selectedPet">
       <q-tab slot="title" label="New Pet"></q-tab>
@@ -73,8 +73,8 @@
         <img class="uploadedImage" :src="image.file">
       </div>
     </div>
-    <router-link :to="{name: 'profile'}">My Muppet Babies</router-link :to="{name: 'profile'}">
-    </div>
+    <router-link v-if="isHost" :to="{name: 'profile'}">Go to My Pets</router-link :to="{name: 'profile'}">
+  </div>
 
   </div>
 </template>
@@ -180,30 +180,30 @@
           cntct: this.activePet.cntct,
           notes: this.activePet.notes
         }
-      },              
+      },
       components: {
         VueBase64FileUpload
-        }
-      },
-      activeUser: function () {
-        this.userData = {
-          description: this.$store.state.user.description,
-          price: this.$store.state.user.price,
-          address: this.$store.state.user.address
-        }
+      }
+    },
+    activeUser: function () {
+      this.userData = {
+        description: this.$store.state.user.description,
+        price: this.$store.state.user.price,
+        address: this.$store.state.user.address
       }
     }
+  }
 
-  
+
 
 </script>
 
 <style>
- .v1-image {
-   max-width: 200px;
- }
- .uploadedImage {
-   max-width: 200px;
- }
+  .v1-image {
+    max-width: 200px;
+  }
 
+  .uploadedImage {
+    max-width: 200px;
+  }
 </style>

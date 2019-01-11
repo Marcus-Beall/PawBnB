@@ -17,11 +17,11 @@
           parties.</small>
       </div> <button type="submit" class="btn btn-light">Submit</button>
     </form>
-    </form>
     <h4>Upload file</h4>
     <div>
       <vue-base64-file-upload id="picture" class="v1" accept="image/png,image/jpeg" image-class="v1-image" input-class="v1-image js-test"
-        :max-size="customImageMaxSize" @size-exceeded="onSizeExceeded" @file="onFile" @load="onLoad" /><button @click="upLoad">Submit
+        :max-size="customImageMaxSize" @size-exceeded="onSizeExceeded" @file="onFile" @load="onLoad" />
+      <button @click="upLoad">Submit
         Photo</button>
     </div>
     <div v-for="(image, i) in images">

@@ -65,8 +65,8 @@
     <h4>Upload photo</h4>
     <div>
       <vue-base64-file-upload id="picture" class="v1" accept="image/png,image/jpeg" image-class="v1-image" input-class="v1-image js-test"
-        :max-size="customImageMaxSize" @size-exceeded="onSizeExceeded" @file="onFile" @load="onLoad" />
-      <button @click="upLoad">Submit Photo</button>
+        :max-size="customImageMaxSize" @size-exceeded="onSizeExceeded" @file="onFile" @load="onLoad" /><button @click="upLoad">Submit
+        Photo</button>
     </div>
     <div v-for="image in images">
       <div class="card">
@@ -74,13 +74,14 @@
       </div>
     </div>
     <router-link :to="{name: 'profile'}">My Muppet Babies</router-link :to="{name: 'profile'}">
-    </div>
+  </div>
 
   </div>
 </template>
 
 <script>
   import VueBase64FileUpload from 'vue-base64-file-upload'
+
   export default {
     name: 'profile',
     props: ['reviews'],
@@ -107,8 +108,8 @@
       }
     },
     mounted() {
-      this.getPets(this.user._id)
-      this.averageRatings(this.reviews)
+      this.getPets(this.user._id);
+      this.averageRatings(this.reviews);
       document.getElementsByClassName('js-test')[0].removeAttribute("disabled");
     },
     computed: {
@@ -168,6 +169,14 @@
 
       onSizeExceeded(size) {
         alert(`Image ${size}Mb size exceeds limits of ${this.customImageMaxSize}Mb!`);
+      },
+      deleteImage(imageId, index) {
+        let imgData = {
+          index: index,
+          userId: this.user._id,
+          imgId: imageId
+        }
+        this.$store.dispatch('deleteUserImage', imgData)
       }
     },
     watch: {
@@ -180,30 +189,31 @@
           cntct: this.activePet.cntct,
           notes: this.activePet.notes
         }
-      },              
-      components: {
-        VueBase64FileUpload
-        }
       },
-      activeUser: function () {
-        this.userData = {
-          description: this.$store.state.user.description,
-          price: this.$store.state.user.price,
-          address: this.$store.state.user.address
-        }
-      }
-    }
 
-  
+    },
+    activeUser: function () {
+      this.userData = {
+        description: this.$store.state.user.description,
+        price: this.$store.state.user.price,
+        address: this.$store.state.user.address
+      }
+    },
+    components: {
+      VueBase64FileUpload
+    }
+  }
+
+
 
 </script>
 
 <style>
- .v1-image {
-   max-width: 200px;
- }
- .uploadedImage {
-   max-width: 200px;
- }
+  .v1-image {
+    max-width: 200px;
+  }
 
+  .uploadedImage {
+    max-width: 200px;
+  }
 </style>

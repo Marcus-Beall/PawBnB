@@ -105,9 +105,6 @@
       user() {
         return this.$store.state.user
       },
-      unavailable() {
-        return this.$store.state.unavailable
-      },
       images() {
         return this.$store.state.user.images
       }
@@ -200,6 +197,4 @@
   .uploadedImage {
     max-width: 200px;
   }
-
-
 </style>

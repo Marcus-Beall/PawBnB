@@ -109,7 +109,7 @@
     mounted() {
       document.getElementsByClassName('js-test')[0].removeAttribute("disabled")
       this.averageRatings(this.user.reviews)
-      this.$store.dispatch(getPets(this.user._id))
+      this.$store.dispatch(this.getPets(this.user._id))
     },
 
     computed: {

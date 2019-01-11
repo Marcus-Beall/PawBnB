@@ -13,5 +13,16 @@ router.get('/:bookingId', (req, res, next) => {
       next()
     })
 })
+//MAKE A BOOKING
+router.post('/:bookingId', (req, res, next) => {
+  Bookings.create(req.body)
+    .then(data => {
+      res.send(data)
+    })
+    .catch(err => {
+      console.log(err)
+      next()
+    })
+})
 
 module.exports = Bookings

@@ -23,7 +23,7 @@
       </span>
       <button type="submit" class="btn btn-light">Submit</button>
     </form>
-    <legend v-if="isHost" class="d-flex justify-content-center">Go to My Pets</legend>
+    <legend v-if="user.isHost" class="d-flex justify-content-center">Go to My Pets</legend>
 
     <q-tabs v-model="selectedPet">
       <q-tab slot="title" label="New Pet"></q-tab>
@@ -65,15 +65,15 @@
     <h4>Upload photo</h4>
     <div>
       <vue-base64-file-upload id="picture" class="v1" accept="image/png,image/jpeg" image-class="v1-image" input-class="v1-image js-test"
-        :max-size="customImageMaxSize" @size-exceeded="onSizeExceeded" @file="onFile" @load="onLoad" />
-      <button @click="upLoad">Submit Photo</button>
+        :max-size="customImageMaxSize" @size-exceeded="onSizeExceeded" @file="onFile" @load="onLoad" /><button @click="upLoad">Submit
+        Photo</button>
     </div>
     <div v-for="image in images">
       <div class="card">
         <img class="uploadedImage" :src="image.file">
       </div>
     </div>
-    <router-link v-if="isHost" :to="{name: 'profile'}">Go to My Pets</router-link :to="{name: 'profile'}">
+    <router-link v-if="user.isHost" :to="{name: 'profile'}">Go to My Pets</router-link :to="{name: 'profile'}">
   </div>
 
   </div>
@@ -81,6 +81,7 @@
 
 <script>
   import VueBase64FileUpload from 'vue-base64-file-upload'
+
   export default {
     name: 'profile',
     props: ['reviews'],
@@ -107,9 +108,13 @@
       }
     },
     mounted() {
+      document.getElementsByClassName('js-test')[0].removeAttribute("disabled")
+    },
+    mounted() {
       this.getPets(this.user._id)
-      this.averageRatings(this.reviews)
-      document.getElementsByClassName('js-test')[0].removeAttribute("disabled");
+    },
+    mounted() {
+      this.averageRatings(this.user.reviews)
     },
     computed: {
       user() {
@@ -142,12 +147,17 @@
         this.$store.dispatch('setPet', pet)
       },
       averageRatings(reviews) {
-        let out = 0
-        for (let i = 0; i < reviews.length; i++) {
-          let rating = reviews[i].ratings;
-          out += rating
+        if (reviews.length > 0) {
+          let out = 0
+          for (let i = 0; i < reviews.length; i++) {
+            let rating = reviews[i].ratings;
+            out += rating
+          }
+          this.reviewValue = (Math.round(out / reviews.length))
         }
-        this.reviewValue = (Math.round(out / reviews.length))
+        else {
+          this.reviewValue = 0
+        }
       },
       upLoad() {
         let imgData = {
@@ -168,6 +178,14 @@
 
       onSizeExceeded(size) {
         alert(`Image ${size}Mb size exceeds limits of ${this.customImageMaxSize}Mb!`);
+      },
+      deleteImage(imageId, index) {
+        let imgData = {
+          index: index,
+          userId: this.user._id,
+          imgId: imageId
+        }
+        this.$store.dispatch('deleteUserImage', imgData)
       }
     },
     watch: {
@@ -181,9 +199,6 @@
           notes: this.activePet.notes
         }
       },
-      components: {
-        VueBase64FileUpload
-      }
     },
     activeUser: function () {
       this.userData = {
@@ -191,6 +206,9 @@
         price: this.$store.state.user.price,
         address: this.$store.state.user.address
       }
+    },
+    components: {
+      VueBase64FileUpload
     }
   }
 

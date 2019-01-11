@@ -9,7 +9,7 @@
           <search></search>
         </div>
       </div>
-  </div>
+    </q-page>
   </div>
 </template>
 

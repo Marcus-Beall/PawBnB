@@ -7,7 +7,7 @@
       <form class="px-2" @submit.prevent="search">
         <div class="form-group ">
           <label class="control-label" for="search">Search for Hosts</label>
-          <input v-model="query.zipcode" type="text" placeholder="Search for hosts by zipcode..." name="search" class="form-control "
+          <input v-model="query.zipcode" type="text" placeholder="Enter zipcode..." name="search" class="form-control "
             id="search" autofocus />
           <label class="control-label" for="date">From</label>
           <input v-model="query.startmonth" class="form-control " id="start-month" name="start-month" placeholder="MM"

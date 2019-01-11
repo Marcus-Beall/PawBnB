@@ -115,7 +115,6 @@ export default new Vuex.Store({
     searchHosts({ commit, dispatch }, query) {
       api.get('hosts/' + query.zipcode)
         .then(res => {
-
           let results = res.data
           commit('searchResults', results)
           commit('queryResults', query)

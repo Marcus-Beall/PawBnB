@@ -6,12 +6,27 @@
     <p>{{result.description}}</p>
     <h4>${{result.price}}</h4>
     <q-btn-dropdown type="button" label="Book" class="primary">
-      <q-list highlight>
-        <q-list-header>Recent chats</q-list-header>
-        <q-item>
-          <q-item-side avatar="statics/linux-avatar.png" />
-          <q-item-main label="Jim Doe" />
-          <q-item-side right icon="chat_bubble" />
+      <q-list>
+        <q-item tag="label">
+          <q-item-main>
+            <q-item-tile label>Start Date</q-item-tile>
+            <q-item-tile sublabel>{{booking.start}}</q-item-tile>
+          </q-item-main>
+          <q-item-side right>
+            <q-datetime icon="fas fa-calendar-alt" type="date" v-model="booking.start" color="primary" />
+          </q-item-side>
+        </q-item>
+        <q-item tag="label">
+          <q-item-main>
+            <q-item-tile label>End Date</q-item-tile>
+            <q-item-tile sublabel>{{booking.end}}</q-item-tile>
+          </q-item-main>
+          <q-item-side right>
+            <q-datetime icon="fas fa-calendar-alt" type="date" v-model="booking.end" color="primary" />
+          </q-item-side>
+        </q-item>
+        <q-item v-if="booking.start > 0 && booking.end > 0">
+          <q-btn flat color="primary" icon="check" label="Book" @click="book" />
         </q-item>
       </q-list>
     </q-btn-dropdown>
@@ -32,6 +47,7 @@
 </template>
 
 <script>
+  import { date } from 'quasar'
   export default {
     name: 'resultPage',
     data() {
@@ -41,6 +57,10 @@
             ratings: 1,
             content: ''
           }
+        },
+        booking: {
+          start: new Date(),
+          end: new Date()
         }
       }
     },
@@ -61,13 +81,25 @@
         this.$store.dispatch('newReview', this.review)
       },
       book() {
+        let startDate = date.formatDate(this.booking.start, 'M-DD')
+        let endDate = date.formatDate(this.booking.end, 'M-DD')
+        let startDates = startDate.split("-")
+        let endDates = endDate.split("-")
+        let start = parseInt(startDates[1]) * parseInt(startDates[0]) + (30 * (startDates[0] - 1))
+        let end = parseInt(endDates[1]) * parseInt(endDates[0]) + (30 * (endDates[0] - 1))
+        let dates = []
+        for (let i = start; i <= end; i++) {
+          dates.push(i);
+        }
         let playload = {
           hostEmail: this.result.email,
           hostId: this.result._id,
           userId: this.user._id,
-          userEmail: this.user.email
+          userEmail: this.user.email,
+          dates: dates
         }
-        this.$store.dispatch('makeBooking', payload)
+        console.log(dates)
+        // this.$store.dispatch('makeBooking', payload)
       }
     }
   }

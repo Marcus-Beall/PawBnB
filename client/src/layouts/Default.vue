@@ -71,13 +71,15 @@
     </q-page-container>
 
     <q-layout-footer>
-      <div class="feet absolute-center">
-        <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-square"></i></a>
-        <a href="https://twitter.com/login?lang=en" target="_blank"><i class="fab fa-twitter-square"></i></a>
-        <a href="https://www.instagram.com/accounts/login/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://accounts.snapchat.com/accounts/login?continue=https%3A%2F%2Faccounts.snapchat.com%2Faccounts%2Fwelcome"
-          target="_blank"><i class="fab fa-snapchat-square"></i></a>
-      </div>
+      <q-toolbar color="primary">
+        <div class="feet absolute-center">
+          <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-square"></i></a>
+          <a href="https://twitter.com/login?lang=en" target="_blank"><i class="fab fa-twitter-square"></i></a>
+          <a href="https://www.instagram.com/accounts/login/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://accounts.snapchat.com/accounts/login?continue=https%3A%2F%2Faccounts.snapchat.com%2Faccounts%2Fwelcome"
+            target="_blank"><i class="fab fa-snapchat-square"></i></a>
+        </div>
+      </q-toolbar>
     </q-layout-footer>
   </q-layout>
 </template>

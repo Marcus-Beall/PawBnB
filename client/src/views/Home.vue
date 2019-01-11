@@ -38,7 +38,6 @@
   }
 
 
-
   .box {
     height: 18vh;
     margin-top: 25px;

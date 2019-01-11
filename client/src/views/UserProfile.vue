@@ -23,7 +23,7 @@
       </span>
       <button type="submit" class="btn btn-light">Submit</button>
     </form>
-    <legend v-if="user.isHost" class="d-flex justify-content-center">Go to My Pets</legend>
+    <legend v-if="user.isHost" class="d-flex justify-content-center">My Pets</legend>
 
     <q-tabs v-model="selectedPet">
       <q-tab slot="title" label="New Pet"></q-tab>

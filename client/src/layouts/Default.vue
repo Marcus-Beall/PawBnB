@@ -7,7 +7,12 @@
         <q-toolbar-title class="absolute-center">
           P<i class="fas fa-paw"></i>wBnB
         </q-toolbar-title>
-
+        <router-link v-if="user._id" :to="{name: 'home'}">
+          <q-btn flat class="absolute-right" label="Logout" style="color:white" @click="logout" />
+        </router-link>
+        <router-link v-else :to="{name:'login'}">
+          <q-btn flat label="Login" style="color:white" class="absolute-right" />
+        </router-link>
       </q-toolbar>
     </q-layout-header>
 

@@ -25,10 +25,14 @@
       <button class="btn btn-light" @click="upLoad">Submit
         Photo</button>
     </div>
-
-    <div v-for="image in images" v-show="false">
-      <div class="card">
-        <img class="uploadedImage" :src="image.file">
+    <hr>
+    <div class="container-fluid">
+      <div class="row">
+        <div v-for="image in images">
+          <span class="card">
+            <img class="uploadedImage" :src="image.file">
+          </span>
+        </div>
       </div>
     </div>
 
@@ -166,12 +170,9 @@
 </script>
 
 <style>
-  .q-card-media {
-    max-width: 200px;
-  }
-
   .card {
     max-width: 200px;
+    flex-wrap: wrap;
   }
 
   .q-card {

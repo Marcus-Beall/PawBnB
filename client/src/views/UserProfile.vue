@@ -23,7 +23,7 @@
       </span>
       <button type="submit" class="btn btn-light">Submit</button>
     </form>
-    <legend class="d-flex justify-content-center">My Fur Babies</legend>
+    <legend v-if="isHost" class="d-flex justify-content-center">Go to My Pets</legend>
 
     <q-tabs v-model="selectedPet">
       <q-tab slot="title" label="New Pet"></q-tab>
@@ -73,7 +73,7 @@
         <img class="uploadedImage" :src="image.file">
       </div>
     </div>
-    <router-link :to="{name: 'profile'}">My Muppet Babies</router-link :to="{name: 'profile'}">
+    <router-link v-if="isHost" :to="{name: 'profile'}">Go to My Pets</router-link :to="{name: 'profile'}">
   </div>
 
   </div>
@@ -190,7 +190,6 @@
           notes: this.activePet.notes
         }
       },
-
     },
     activeUser: function () {
       this.userData = {

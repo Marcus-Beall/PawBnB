@@ -1,17 +1,17 @@
 <template>
   <div class="home">
-  <q-page class="d-flex flex-row">
-      <div class="row box d-flex justify-content-center">
-        <h1>P<i id="home-icon"class="fas fa-paw"/>wBnB</h1>
+    <q-page class="d-flex">
+      <div class="flex-row">
+        <div class="row box d-flex justify-content-center">
+          <h1>P<i id="home-icon" class="fas fa-paw" />wBnB</h1>
+        </div>
       </div>
-      
-      
+      <div class="row search-box">
+        <div class=" offset-1">
+          <search></search>
+        </div>
+      </div>
     </q-page>
-    <search class="search-box"></search>
-    <div class="container-fluid">
-      <div class="row middle-home">
-      </div>
-    </div>
   </div>
 </template>
 
@@ -29,8 +29,8 @@
 <style>
   .home {
     background-image: url("https://images.unsplash.com/photo-1538131688925-7e0eb2e7828b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=932&q=80");
-    height: 100vh;
-    width: 100vw;
+    /* height: 100vh; */
+    /* width: 100vw; */
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -41,11 +41,12 @@
 
   .box {
     height: 18vh;
-    margin-top: 100px;
+    margin-top: 25px;
   }
 
   h1 {
-    margin-top: 0px;
+    margin-top: 5px;
+    margin-bottom: 10px;
   }
 
   #home-icon {
@@ -59,10 +60,9 @@
   }
 
   .middle-home {
-  height: 400px;
-  background-color: #2980b9;
-  justify-content: center;
+    height: 400px;
+    background-color: #2980b9;
+    justify-content: center;
 
-}
-
+  }
 </style>

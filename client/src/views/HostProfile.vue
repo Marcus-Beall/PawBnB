@@ -4,15 +4,15 @@
       <legend>My Host Profile</legend>
       <div class="form-group">
         <label for="description">Description</label>
-        <textarea v-model="hostData.description" class="form-control" id="description" rows="3"></textarea>
+        <textarea v-model="user.description" class="form-control" id="description" rows="3"></textarea>
       </div>
       <div class="form-group">
         <label for="price">Desired Price</label>
-        <input type="number" id="price" v-model="hostData.price" class="form-control" placeholder="">
+        <input type="number" id="price" v-model="user.price" class="form-control" placeholder="">
       </div>
       <div class="form-group">
         <label for="address">Address</label>
-        <input type="text" id="address" v-model="hostData.address" class="form-control" placeholder="" aria-describedby="addressText">
+        <input type="text" id="address" v-model="user.address" class="form-control" placeholder="" aria-describedby="addressText">
         <small id="addressText" class="text-muted">Will not be shown to anyone unless a booking is accepted by both
           parties.</small>
       </div> <button type="submit" class="btn btn-light">Submit</button>
@@ -76,11 +76,11 @@
           // startDate: new Date('03, January 2019').getTime(),
           //endDate: new Date('04, January 2019').getTime()
         },
-        hostData: {
-          description: this.$store.state.user.description,
-          price: this.$store.state.user.price,
-          address: this.$store.state.user.address
-        },
+        // hostData: {
+        //   description: this.$store.state.user.description,
+        //   price: this.$store.state.user.price,
+        //   address: this.$store.state.user.address
+        // },
         customImageMaxSize: 3,
         file: ''
       }
@@ -103,10 +103,11 @@
         this.$store.dispatch('setUnavailable', this.unavailable)
       },
       enterHostData() {
-        this.hostData.price = parseInt(this.hostData.price)
-        this.hostData.hostId = this.user._id
-        this.hostData.isHost = true
-        this.$store.dispatch('updateHost', this.hostData)
+        // this.hostData.price = parseInt(this.hostData.price)
+        // this.hostData.hostId = this.user._id
+        // this.hostData.isHost = true
+        this.$store.dispatch('updateHost', this.user)
+        // this.$store.dispatch('getHost', this.user)
       },
 
       upLoad() {

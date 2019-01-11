@@ -47,10 +47,10 @@
         <label for="pet-type">Pet Type</label>
         <input type="text" id="pet-type" class="form-control" v-model="petData.type" />
       </div>
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="pet-img">Pet Image</label>
         <input type="text" id="pet-image" class="form-control" v-model="petData.img" />
-      </div>
+      </div> -->
       <div class="form-group">
         <label for="pet-contact">Contact Information</label>
         <input type="text" id="pet-contact" class="form-control" v-model="petData.cntct" />
@@ -61,8 +61,9 @@
       </div>
       <button type="submit" class="btn btn-primary">Add Pet</button>
     </form>
+    <hr>
 
-    <h5>Upload photo</h5>
+    <h5>Upload photos of your pets!</h5>
     <div>
       <vue-base64-file-upload id="picture" class="v1" accept="image/png,image/jpeg" image-class="v1-image" input-class="v1-image js-test"
         :max-size="customImageMaxSize" @size-exceeded="onSizeExceeded" @file="onFile" @load="onLoad" /><button @click="upLoad">Submit

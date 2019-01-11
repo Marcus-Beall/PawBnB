@@ -14,7 +14,7 @@ router.get('/:bookingId', (req, res, next) => {
     })
 })
 //MAKE A BOOKING
-router.post('/:bookingId', (req, res, next) => {
+router.post('/', (req, res, next) => {
   Bookings.create(req.body)
     .then(data => {
       res.send(data)

@@ -2,12 +2,12 @@
   <q-page class="d-flex flex-row">
     <div class="home">
       <div class="row box d-flex justify-content-center">
-        <h1>P<i id="home-icon"class="fas fa-paw"/>wBnB</h1>
+        <h1>P<i id="home-icon" class="fas fa-paw" />wBnB</h1>
       </div>
       <div class="row search-box">
-        <div class="col-9 offset-1">
-      <search></search>
-      </div>
+        <div class=" offset-1">
+          <search></search>
+        </div>
       </div>
     </div>
   </q-page>
@@ -27,8 +27,8 @@
 <style>
   .home {
     background-image: url("https://images.unsplash.com/photo-1538131688925-7e0eb2e7828b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=932&q=80");
-    height: 100vh;
-    width: 100vw;
+    /* height: 100vh; */
+    /* width: 100vw; */
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -39,18 +39,19 @@
 
   .box {
     height: 18vh;
-    margin-top: 100px;
+    margin-top: 25px;
   }
 
   h1 {
-    margin-top: 50px;
+    margin-top: 5px;
+    margin-bottom: 10px;
   }
 
   #home-icon {
     font-size: 180px;
   }
-  
+
   .search-box {
-    margin-top: 100px;
+    margin-top: 50px;
   }
 </style>

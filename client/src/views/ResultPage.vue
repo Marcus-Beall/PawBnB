@@ -5,7 +5,7 @@
     <h3>Description</h3>
     <p>{{result.description}}</p>
     <h4>${{result.price}}</h4>
-    <button type="button" name="book" id="book" class="btn btn-primary" btn-lg btn-block @click="book">Book</button>
+    <button type="button" name="book" id="book" class="btn btn-primary" btn-lg btn-block @submit="book">Book</button>
     <form @submit="addReview">
       <input type="textarea" v-model="review.reviewBody.content" id="review" placeholder="Add a review here...">
       <v-rating v-model="review.reviewBody.ratings"></v-rating>

@@ -182,7 +182,7 @@ export default new Vuex.Store({
     createPet({ commit, dispatch }, petData) {
       api.post('pets/', petData)
         .then(res => {
-          commit('setPet', res.data)
+          dispatch("getPets", petData.ownerId)
         })
     },
     setPet({ commit, dispatch }, petData) {

@@ -14,6 +14,8 @@ import Results from './views/Results.vue'
 import Profile from './views/UserProfile.vue'
 // @ts-ignore
 import Host from './views/HostProfile.vue'
+// @ts-ignore
+import Booking from './views/Bookings.vue'
 
 Vue.use(Router)
 
@@ -53,6 +55,11 @@ export default new Router({
           path: '/profile/host',
           name: 'host',
           component: Host
+        },
+        {
+          path: '/bookings',
+          name: 'bookings',
+          component: Booking
         },
         {
           path: '*',

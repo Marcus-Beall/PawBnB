@@ -7,6 +7,7 @@
         <q-toolbar-title class="absolute-center">
           P<i class="fas fa-paw"></i>wBnB
         </q-toolbar-title>
+
       </q-toolbar>
     </q-layout-header>
 
@@ -36,6 +37,12 @@
           <q-item v-else>
             <router-link :to="{name: 'host'}">Profile Page</router-link>
           </q-item>
+
+          <q-item v-if="user.isHost">
+            <router-link :to="{name: 'boooking'}">
+              </router-link:to> Booking Requests</router-link>
+          </q-item>
+
 
           <q-item v-if="!user.isHost">
             <router-link :to="{name: 'host'}">Host a Dog</router-link>

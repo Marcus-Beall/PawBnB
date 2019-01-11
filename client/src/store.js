@@ -33,6 +33,7 @@ export default new Vuex.Store({
     query: [],
     activeResult: {},
     booking: {},
+    bookings: [],
     unavailable: []
   },
   mutations: {
@@ -51,6 +52,7 @@ export default new Vuex.Store({
     setActive(state, result) {
       state.activeResult = result
     },
+
 
 
     unavailability(state, unavailable) {
@@ -156,6 +158,10 @@ export default new Vuex.Store({
     //BOOKING
     startBooking({ commit, dispatch }, booking) {
       commit('setBooking', booking)
+    },
+
+    getBookings({ commit, dispatch }, booking) {
+      commit('getBookings', booking)
     },
 
     makeBooking({ commit, dispatch }, booking) {

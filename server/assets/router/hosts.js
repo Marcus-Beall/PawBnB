@@ -2,7 +2,6 @@ let router = require('express').Router()
 let Hosts = require('../models/user')
 
 
-
 //UPDATE A HOST
 router.put('/:hostId', (req, res, next) => {
   Hosts.findByIdAndUpdate(req.params.hostId, req.body, { new: true })
@@ -27,6 +26,9 @@ router.get('/:zipcode', (req, res, next) => {
       next()
     })
 })
+
+
+
 
 
 //GET SPECIFIC USER

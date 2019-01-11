@@ -17,17 +17,11 @@ let imageSchema = new Schema({
 
 })
 
-// let unavailableSchema = new Schema({
-//   startDay: { type: Number },
-//   startMonth: { type: Number },
-//   startYear: { type: Number },
-//   endDay: { type: Number },
-//   endMonth: { type: Number },
-//   endYear: { type: Number }
-// })
 let unavailableSchema = new Schema({
-  startDate: { type: Number },
-  endDate: { type: Number }
+  startDay: { type: Number },
+  startMonth: { type: Number },
+  endDay: { type: Number },
+  endMonth: { type: Number },
 })
 
 

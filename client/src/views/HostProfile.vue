@@ -26,10 +26,14 @@
         Photo</button>
     </div>
     <hr>
+    <div class="container-fluid">
+      <div class="row">
         <div v-for="image in images">
-          <div class="card">
+          <span class="card">
             <img class="uploadedImage" :src="image.file">
-          </div>
+          </span>
+        </div>
+        </div>
         </div>
 
     <div v-for="(image, i) in images">
@@ -172,6 +176,7 @@
 
 .card {
   max-width: 200px;
+  flex-wrap: wrap;
 }
 .q-card {
   max-width: 200px;

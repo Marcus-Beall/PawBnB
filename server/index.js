@@ -2,6 +2,7 @@ var express = require('express')
 var bp = require('body-parser')
 var server = express()
 var app = require('express')();
+// @ts-ignore
 var serve = require('http').Server(app)
 var io = require('socket.io')(serve)
 var cors = require('cors')
@@ -45,6 +46,9 @@ let hostRoutes = require('./assets/router/hosts')
 server.use('/api/hosts', hostRoutes)
 let petRoutes = require('./assets/router/pets')
 server.use('/api/pets', petRoutes)
+let bookingRoutes = require('./assets/router/booking')
+// @ts-ignore
+server.use('/api/bookings', bookingRoutes)
 
 
 server.use((req, res, next) => {

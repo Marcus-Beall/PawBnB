@@ -165,8 +165,10 @@ export default new Vuex.Store({
     },
 
     makeBooking({ commit, dispatch }, booking) {
-      api.post()
-      commit('')
+      api.post('bookings/', booking)
+        .then(res => {
+          commit('getBookings', res.data)
+        })
     },
 
     onUpload({ commit, dispatch }, imgFile) {

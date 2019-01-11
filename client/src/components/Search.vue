@@ -31,7 +31,7 @@
     data() {
       return {
         query: {
-          zipcode: "" || this.$store.state.user.zipcode,
+          zipcode: "",
           startmonth: "",
           startday: "",
           endmonth: "",

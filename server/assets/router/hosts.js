@@ -17,7 +17,7 @@ router.put('/:hostId', (req, res, next) => {
 
 //GET BY ZIP AND AVAILABILITY
 router.get('/:zipcode', (req, res, next) => {
-  Hosts.find({ isHost: true, zipcode: req.params.zipcodse, unavailable: req.params.unavailable })
+  Hosts.find({ isHost: true, zipcode: req.params.zipcode})
     .then(data => {
       res.send(data)
     })

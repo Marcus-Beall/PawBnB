@@ -5,7 +5,16 @@
     <h3>Description</h3>
     <p>{{result.description}}</p>
     <h4>${{result.price}}</h4>
-    <button type="button" name="book" id="book" class="btn btn-primary" btn-lg btn-block @submit="book">Book</button>
+    <q-btn-dropdown type="button" label="Book" class="primary">
+      <q-list highlight>
+        <q-list-header>Recent chats</q-list-header>
+        <q-item>
+          <q-item-side avatar="statics/linux-avatar.png" />
+          <q-item-main label="Jim Doe" />
+          <q-item-side right icon="chat_bubble" />
+        </q-item>
+      </q-list>
+    </q-btn-dropdown>
     <form @submit="addReview">
       <input type="textarea" v-model="review.reviewBody.content" id="review" placeholder="Add a review here...">
       <v-rating v-model="review.reviewBody.ratings"></v-rating>

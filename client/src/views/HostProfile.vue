@@ -24,12 +24,12 @@
       <button @click="upLoad">Submit
         Photo</button>
     </div>
-    
-        <div v-for="image in images">
-          <div class="card">
-            <img class="uploadedImage" :src="image.file">
-          </div>
-        </div>
+
+    <div v-for="image in images" v-show="false">
+      <div class="card">
+        <img class="uploadedImage" :src="image.file">
+      </div>
+    </div>
 
     <div v-for="(image, i) in images">
       <q-card>
@@ -100,9 +100,6 @@
       user() {
         return this.$store.state.user
       },
-      unavailable() {
-        return this.$store.state.unavailable
-      },
       images() {
         return this.$store.state.user.images
       }
@@ -168,10 +165,9 @@
 </script>
 
 <style>
-
-.q-card-media {
-  max-width: 200px;
-}
+  .q-card-media {
+    max-width: 200px;
+  }
 
   .v1-image {
     max-width: 200px;
@@ -188,6 +184,4 @@
   .uploadedImage {
     max-width: 200px;
   }
-
-
 </style>

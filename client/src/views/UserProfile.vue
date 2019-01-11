@@ -23,7 +23,7 @@
       </span>
       <button type="submit" class="btn btn-light">Submit</button>
     </form>
-    <legend v-if="isHost" class="d-flex justify-content-center">Go to My Pets</legend>
+    <legend v-if="user.isHost" class="d-flex justify-content-center">Go to My Pets</legend>
 
     <q-tabs v-model="selectedPet">
       <q-tab slot="title" label="New Pet"></q-tab>
@@ -73,7 +73,7 @@
         <img class="uploadedImage" :src="image.file">
       </div>
     </div>
-    <router-link v-if="isHost" :to="{name: 'profile'}">Go to My Pets</router-link :to="{name: 'profile'}">
+    <router-link v-if="user.isHost" :to="{name: 'profile'}">Go to My Pets</router-link :to="{name: 'profile'}">
   </div>
 
   </div>
@@ -108,9 +108,13 @@
       }
     },
     mounted() {
-      this.getPets(this.user._id);
-      this.averageRatings(this.reviews);
-      document.getElementsByClassName('js-test')[0].removeAttribute("disabled");
+      document.getElementsByClassName('js-test')[0].removeAttribute("disabled")
+    },
+    mounted() {
+      this.getPets(this.user._id)
+    },
+    mounted() {
+      this.averageRatings(this.user.reviews)
     },
     computed: {
       user() {
@@ -143,12 +147,17 @@
         this.$store.dispatch('setPet', pet)
       },
       averageRatings(reviews) {
-        let out = 0
-        for (let i = 0; i < reviews.length; i++) {
-          let rating = reviews[i].ratings;
-          out += rating
+        if (reviews.length > 0) {
+          let out = 0
+          for (let i = 0; i < reviews.length; i++) {
+            let rating = reviews[i].ratings;
+            out += rating
+          }
+          this.reviewValue = (Math.round(out / reviews.length))
         }
-        this.reviewValue = (Math.round(out / reviews.length))
+        else {
+          this.reviewValue = 0
+        }
       },
       upLoad() {
         let imgData = {

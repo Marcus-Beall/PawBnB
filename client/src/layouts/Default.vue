@@ -31,11 +31,6 @@
             </q-item>
           </q-list>
           <q-item-separator />
-          <q-item>
-            <q-btn flat class="btn btn-primary" @click="logout">
-              <router-link :to="{name: 'home'}">Logout</router-link>
-            </q-btn flat>
-          </q-item>
           <q-item v-if="!user.isHost">
             <router-link :to="{name: 'profile'}">Profile Page</router-link>
           </q-item>
@@ -55,9 +50,6 @@
         </q-list>
       </q-list>
       <q-list v-else>
-        <router-link :to="{name:'login'}">
-          <q-item>Login</q-item>
-        </router-link>
         <q-item-separator />
         <q-list-header>Navigation</q-list-header>
         <q-item to="/" exact>

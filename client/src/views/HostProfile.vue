@@ -36,7 +36,7 @@
       </div>
     </div>
 
-    <div v-for="(image, i) in images">
+    <div v-for="(image, i) in images" v-show="false">
       <q-card>
         <q-card-media class="deleteIcon">
           <i class="fa fa-laptop deleteIcon2" @click="deleteImage(image._id, i)" aria-hidden="true" />

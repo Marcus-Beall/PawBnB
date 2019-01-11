@@ -166,11 +166,11 @@
 </script>
 
 <style>
-  <<<<<<< HEAD .q-card-media {
+  .q-card-media {
     max-width: 200px;
   }
 
-  =======.card {
+  .card {
     max-width: 200px;
   }
 
@@ -182,7 +182,7 @@
     max-width: 200px;
   }
 
-  >>>>>>>a8df726bf3fffe3b886268c40e3d4185709b36b0 .v1-image {
+  .v1-image {
     max-width: 200px;
   }
 

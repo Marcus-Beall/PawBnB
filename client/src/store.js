@@ -116,6 +116,7 @@ export default new Vuex.Store({
     searchHosts({ commit, dispatch }, query) {
       api.get('hosts/' + query.zipcode)
         .then(res => {
+          debugger
           let results = res.data
           commit('searchResults', results)
           commit('queryResults', query)
@@ -141,10 +142,16 @@ export default new Vuex.Store({
     },
 
     //USERDATA
-    updateHost({ commit, dispatch }, hostData) {
-      api.put('hosts/' + hostData.hostId, hostData)
+    getHost({ commit, dispatch }, hostId) {
+      api.get('profle/host' + hostId)
         .then(res => {
           commit('setUser', res.data)
+        })
+    },
+    updateHost({ commit, dispatch }, hostData) {
+      api.put('hosts/' + hostData._id, hostData)
+        .then(res => {
+          dispatch('setUser', hostData)
         })
     },
 

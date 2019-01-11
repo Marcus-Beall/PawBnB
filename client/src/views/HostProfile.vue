@@ -27,7 +27,7 @@
     <div v-for="(image, i) in images">
       <q-card>
         <q-card-media class="deleteIcon">
-          <i class="fa fa-laptop" @click="deleteImage(image._id, i)" aria-hidden="true" />
+          <i class="fa fa-laptop deleteIcon2" @click="deleteImage(image._id, i)" aria-hidden="true" />
           <img class="uploadedImage" :src="image.file">
         </q-card-media>
       </q-card>
@@ -161,12 +161,12 @@
     max-width: 200px;
   }
 
-  .deleteIcon {
+  .deleteIcon2 {
     opacity: 0;
   }
 
   .deleteIcon:hover {
-    opacity: 1;
+    opacity: 1 !important;
   }
 
   .uploadedImage {

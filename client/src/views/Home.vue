@@ -1,9 +1,9 @@
 <template>
   <div class="home">
+    <h1>P<i id="home-icon" class="fas fa-paw" />wBnB</h1>
     <q-page class="d-flex">
       <div class="flex-row">
         <div class="row box d-flex justify-content-center">
-          <h1>P<i id="home-icon" class="fas fa-paw" />wBnB</h1>
         </div>
       </div>
       <div class="row search-box">

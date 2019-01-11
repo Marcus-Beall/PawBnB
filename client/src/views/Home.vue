@@ -1,16 +1,18 @@
 <template>
+  <div class="home">
   <q-page class="d-flex flex-row">
-    <div class="home">
       <div class="row box d-flex justify-content-center">
         <h1>P<i id="home-icon"class="fas fa-paw"/>wBnB</h1>
       </div>
-      <div class="row search-box">
-        <div class="col-9 offset-1">
-      <search></search>
-      </div>
+      
+      
+    </q-page>
+    <search class="search-box"></search>
+    <div class="container-fluid">
+      <div class="row middle-home">
       </div>
     </div>
-  </q-page>
+  </div>
 </template>
 
 <script>
@@ -43,14 +45,24 @@
   }
 
   h1 {
-    margin-top: 50px;
+    margin-top: 0px;
   }
 
   #home-icon {
     font-size: 180px;
   }
-  
+
   .search-box {
-    margin-top: 100px;
+    margin-top: 85px;
+    margin-right: 600px;
+    max-height: 200px;
   }
+
+  .middle-home {
+  height: 400px;
+  background-color: #2980b9;
+  justify-content: center;
+
+}
+
 </style>

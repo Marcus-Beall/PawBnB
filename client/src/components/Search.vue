@@ -1,8 +1,8 @@
 <template>
-  <div class="search col-3 offset-2">
+  <div class="search col-3 offset-1">
     <div class="card">
       <div class="card-header">
-        <h3>Plan for your pooch's stay!</h3>
+        <h5>Plan your pooch's stay!</h5>
       </div>
       <form class="px-2" @submit.prevent="search">
         <div class="form-group">
@@ -22,7 +22,6 @@
         </div>
       </form>
     </div>
-  </div>
   </div>
 </template>
 

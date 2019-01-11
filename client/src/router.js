@@ -57,7 +57,7 @@ export default new Router({
           component: Host
         },
         {
-          path: '/bookings',
+          path: 'profile/host/bookings',
           name: 'bookings',
           component: Booking
         },

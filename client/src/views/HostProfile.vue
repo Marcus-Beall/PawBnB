@@ -3,15 +3,15 @@
     <form @submit.prevent="enterHostData">
       <legend>My Host Profile</legend>
       <div class="form-group">
-        <label for="description">Description</label>
+        <label for="description">Description of House</label>
         <textarea v-model="user.description" class="form-control" id="description" rows="3"></textarea>
       </div>
       <div class="form-group">
-        <label for="price">Desired Price</label>
+        <label for="price">Desired Price Per Day</label>
         <input type="number" id="price" v-model="user.price" class="form-control" placeholder="">
       </div>
       <div class="form-group">
-        <label for="address">Address</label>
+        <label for="address">Address including zipcode</label>
         <input type="text" id="address" v-model="user.address" class="form-control" placeholder="" aria-describedby="addressText">
         <small id="addressText" class="text-muted">Will not be shown to anyone unless a booking is accepted by both
           parties.</small>
@@ -24,6 +24,13 @@
       <button @click="upLoad">Submit
         Photo</button>
     </div>
+    
+        <div v-for="image in images">
+          <div class="card">
+            <img class="uploadedImage" :src="image.file">
+          </div>
+        </div>
+
     <div v-for="(image, i) in images">
       <q-card>
         <q-card-media class="deleteIcon">
@@ -93,6 +100,9 @@
       user() {
         return this.$store.state.user
       },
+      unavailable() {
+        return this.$store.state.unavailable
+      },
       images() {
         return this.$store.state.user.images
       }
@@ -158,6 +168,11 @@
 </script>
 
 <style>
+
+.q-card-media {
+  max-width: 200px;
+}
+
   .v1-image {
     max-width: 200px;
   }
@@ -173,4 +188,6 @@
   .uploadedImage {
     max-width: 200px;
   }
+
+
 </style>

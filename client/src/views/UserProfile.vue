@@ -73,7 +73,6 @@
         <img class="uploadedImage" :src="image.file">
       </div>
     </div>
-    <router-link v-if="user.isHost" :to="{name: 'profile'}">Go to My Pets</router-link :to="{name: 'profile'}">
   </div>
 
   </div>
@@ -111,7 +110,7 @@
       document.getElementsByClassName('js-test')[0].removeAttribute("disabled")
     },
     mounted() {
-      this.getPets(this.user._id)
+      this.$store.dispatch(getPets(this.user._id))
     },
     mounted() {
       this.averageRatings(this.user.reviews)

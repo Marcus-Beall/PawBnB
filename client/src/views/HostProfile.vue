@@ -17,18 +17,23 @@
           parties.</small>
       </div> <button type="submit" class="btn btn-light">Submit</button>
     </form>
-    <h4>Upload file</h4>
+    <hr>
+    <h5>Upload Pictures of Your House</h5>
     <div>
       <vue-base64-file-upload id="picture" class="v1" accept="image/png,image/jpeg" image-class="v1-image" input-class="v1-image js-test"
         :max-size="customImageMaxSize" @size-exceeded="onSizeExceeded" @file="onFile" @load="onLoad" />
-      <button @click="upLoad">Submit
+      <button class="btn btn-light" @click="upLoad">Submit
         Photo</button>
     </div>
-    
+    <hr>
+    <div class="container-fluid">
+      <div class="row">
         <div v-for="image in images">
-          <div class="card">
+          <span class="card">
             <img class="uploadedImage" :src="image.file">
-          </div>
+          </span>
+        </div>
+        </div>
         </div>
 
     <div v-for="(image, i) in images">
@@ -100,9 +105,6 @@
       user() {
         return this.$store.state.user
       },
-      unavailable() {
-        return this.$store.state.unavailable
-      },
       images() {
         return this.$store.state.user.images
       }
@@ -169,6 +171,13 @@
 
 <style>
 
+.card {
+  max-width: 200px;
+  flex-wrap: wrap;
+}
+.q-card {
+  max-width: 200px;
+}
 .q-card-media {
   max-width: 200px;
 }
@@ -188,6 +197,4 @@
   .uploadedImage {
     max-width: 200px;
   }
-
-
 </style>

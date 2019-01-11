@@ -62,7 +62,7 @@
       <button type="submit" class="btn btn-primary">Add Pet</button>
     </form>
 
-    <h4>Upload photo</h4>
+    <h5>Upload photo</h5>
     <div>
       <vue-base64-file-upload id="picture" class="v1" accept="image/png,image/jpeg" image-class="v1-image" input-class="v1-image js-test"
         :max-size="customImageMaxSize" @size-exceeded="onSizeExceeded" @file="onFile" @load="onLoad" /><button @click="upLoad">Submit
@@ -79,7 +79,7 @@
 </template>
 
 <script>
-  import VueBase64FileUpload from 'vue-base64-file-upload'
+  import VueBase64FileUpload from 'vue-base64-file-upload' 
 
   export default {
     name: 'profile',
@@ -109,7 +109,7 @@
     mounted() {
       document.getElementsByClassName('js-test')[0].removeAttribute("disabled")
       this.averageRatings(this.user.reviews)
-      this.$store.dispatch(getPets(this.user._id))
+      this.$store.dispatch(this.getPets(this.user._id))
     },
 
     computed: {

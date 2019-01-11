@@ -54,7 +54,6 @@ export default new Vuex.Store({
     },
 
 
-
     unavailability(state, unavailable) {
       state.unavailable = []
       let start = parseInt(unavailable.startday) * parseInt(unavailable.startmonth) + (30 * (unavailable.startmonth - 1))
@@ -116,7 +115,6 @@ export default new Vuex.Store({
     searchHosts({ commit, dispatch }, query) {
       api.get('hosts/' + query.zipcode)
         .then(res => {
-          debugger
           let results = res.data
           commit('searchResults', results)
           commit('queryResults', query)

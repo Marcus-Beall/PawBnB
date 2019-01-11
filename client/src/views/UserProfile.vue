@@ -108,13 +108,10 @@
     },
     mounted() {
       document.getElementsByClassName('js-test')[0].removeAttribute("disabled")
-    },
-    mounted() {
+      this.averageRatings(this.user.reviews)
       this.$store.dispatch(getPets(this.user._id))
     },
-    mounted() {
-      this.averageRatings(this.user.reviews)
-    },
+
     computed: {
       user() {
         return this.$store.state.user

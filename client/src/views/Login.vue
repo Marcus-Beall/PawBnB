@@ -10,7 +10,7 @@
           <q-input type="password" v-model="user.password" id="password" float-label="Password" />
         </div>
       </fieldset>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary">Login</button>
       <button class="btn btn-primary" type="button" @click="loginForm = !loginForm">Register</button>
     </form>
     <div v-else>
@@ -93,7 +93,14 @@
 
 </script>
 
-<style>
+<style scoped>
+  button {
+    min-width: 22ch;
+    max-width: 22ch;
+  }
 
-
+  input {
+    min-width: 51ch;
+    max-width: 51ch;
+  }
 </style>

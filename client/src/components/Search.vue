@@ -61,7 +61,7 @@
   }
 
   .card {
-    min-width: 25vw;
-    max-width: 25vw;
+    min-width: 18vw;
+    max-width: 18vw;
   }
 </style>

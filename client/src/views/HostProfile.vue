@@ -33,10 +33,10 @@
             <img class="uploadedImage" :src="image.file">
           </span>
         </div>
-        </div>
-        </div>
+      </div>
+    </div>
 
-    <div v-for="(image, i) in images">
+    <div v-for="(image, i) in images" v-show="false">
       <q-card>
         <q-card-media class="deleteIcon">
           <i class="fa fa-laptop deleteIcon2" @click="deleteImage(image._id, i)" aria-hidden="true" />
@@ -170,17 +170,18 @@
 </script>
 
 <style>
+  .card {
+    max-width: 200px;
+    flex-wrap: wrap;
+  }
 
-.card {
-  max-width: 200px;
-  flex-wrap: wrap;
-}
-.q-card {
-  max-width: 200px;
-}
-.q-card-media {
-  max-width: 200px;
-}
+  .q-card {
+    max-width: 200px;
+  }
+
+  .q-card-media {
+    max-width: 200px;
+  }
 
   .v1-image {
     max-width: 200px;

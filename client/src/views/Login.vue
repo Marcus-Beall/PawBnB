@@ -75,7 +75,7 @@
 
 </script>
 
-<style>
+<style scoped>
   button {
     min-width: 22ch;
     max-width: 22ch;

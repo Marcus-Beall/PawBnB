@@ -80,7 +80,7 @@
 </template>
 
 <script>
-  import VueBase64FileUpload from 'vue-base64-file-upload' 
+  import VueBase64FileUpload from 'vue-base64-file-upload'
 
   export default {
     name: 'profile',
@@ -163,7 +163,6 @@
         }
         this.$store.dispatch('upLoad', imgData)
       },
-
       onFile(file) {
         console.log(file); // file object
       },

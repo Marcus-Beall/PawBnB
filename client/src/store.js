@@ -83,6 +83,12 @@ export default new Vuex.Store({
           commit('setUser', res.data))
       router.push({ name: 'home' })
     },
+    registerHost({ commit, dispatch }, user) {
+      auth.post('register', user)
+        .then(res =>
+          commit('setUser', res.data))
+      router.push({ name: 'host' })
+    },
     login({ commit, dispatch }, user) {
       auth.post('login', user)
         .then(res =>

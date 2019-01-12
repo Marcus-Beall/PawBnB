@@ -77,8 +77,8 @@
 
 <style>
   button {
-    min-width: 20vw;
-    max-width: 20vw;
+    min-width: 22ch;
+    max-width: 22ch;
   }
 
   input {

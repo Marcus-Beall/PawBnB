@@ -29,7 +29,7 @@
   .home {
     background-image: url("https://images.unsplash.com/photo-1538131688925-7e0eb2e7828b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=932&q=80");
 
-    /* height: 100vh; */
+    height: 100vh;
     /* width: 100vw; */
     background-size: cover;
     background-position: center center;
@@ -44,8 +44,9 @@
   }
 
   h1 {
-    margin-top: 5px;
+    padding-top: 60px;
     margin-bottom: 10px;
+    text-shadow: .5px .5px grey;
   }
 
   #home-icon {

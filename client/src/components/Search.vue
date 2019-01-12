@@ -1,6 +1,6 @@
 <template>
   <div class="search col-3 offset-1">
-    <div class="card">
+    <div class="card form">
       <div class="card-header">
         <h4>Plan your pooch's stay!</h4>
       </div>
@@ -18,7 +18,7 @@
           <input v-model="query.endmonth" class="form-control " id="end-month" name="end-month" placeholder="MM" type="number" />
           <input v-model="query.endday" class="form-control " id="end-day" name="end-day" placeholder="DD" type="number" />
           <input class="form-control " id="end-year" name="end-year" placeholder="YY" type="number" />
-          <q-btn color="primary" type="submit" name="submit">Search</q-btn>
+          <q-btn class="search-button" color="primary" type="submit" name="submit">Search</q-btn>
         </div>
       </form>
     </div>
@@ -64,4 +64,14 @@
     min-width: 18vw;
     max-width: 18vw;
   }
+
+  .form {
+    margin-right: 500px;
+  }
+
+  button.q-btn {
+    vertical-align: 0;
+    min-width: 100px;
+  }
+
 </style>

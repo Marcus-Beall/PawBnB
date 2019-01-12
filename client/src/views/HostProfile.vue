@@ -3,16 +3,15 @@
     <form @submit.prevent="enterHostData">
       <legend>My Host Profile</legend>
       <div class="form-group">
-        <label for="description">Description of House</label>
-        <textarea v-model="user.description" class="form-control" id="description" rows="3"></textarea>
+        <q-input v-model="user.description" type="textarea" :placeholder="user.description" id="description"
+          float-label="Description of House" />
       </div>
       <div class="form-group">
-        <label for="price">Desired Price Per Day</label>
-        <input type="number" id="price" v-model="user.price" class="form-control" placeholder="">
+        <q-input type="number" id="price" v-model="user.price" :placeholder="user.price" float-label="Desired Price Per Day" />
       </div>
       <div class="form-group">
-        <label for="address">Address including zipcode</label>
-        <input type="text" id="address" v-model="user.address" class="form-control" placeholder="" aria-describedby="addressText">
+        <q-input type="text" id="address" v-model="user.address" float-label="address" :placeholder="user.address"
+          aria-describedby="addressText" />
         <small id="addressText" class="text-muted">Will not be shown to anyone unless a booking is accepted by both
           parties.</small>
       </div> <button type="submit" class="btn btn-light">Submit</button>
@@ -30,7 +29,7 @@
     <div v-for="(image, i) in images">
       <q-card>
         <q-card-media class="deleteIcon">
-          <i class="fa fa-laptop" @click="deleteImage(image._id, i)" aria-hidden="true" style="z-index: 2; position: absolute" />
+          <q-icon color="red" class="fa fa-minus-circle" @click="deleteImage(image._id, i)" style="z-index: 2; position: absolute" />
           <img class="uploadedImage" :src="image.file">
         </q-card-media>
       </q-card>

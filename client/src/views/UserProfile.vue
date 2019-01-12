@@ -4,34 +4,30 @@
       <legend class="d-flex justify-content-center">About Me</legend>
 
       <div class="form-group">
-        <label for="description">Description</label>
-        <textarea v-model="userData.description" class="form-control" id="description" rows="3"></textarea>
+        <q-input v-model="user.description" type="textarea" :placeholder="user.description" id="description"
+          float-label="Describe Yourself" />
       </div>
       <span v-if="user.isHost">
         <div class="form-group">
-          <label for="price">Desired Price</label>
-          <input type="number" id="price" v-model="userData.price" class="form-control" placeholder="">
+          <q-input type="number" id="price" v-model="user.price" :placeholder="user.price" float-label="Desired Price Per Day" />
         </div>
         <div class="form-group">
-          <label for="address">Address</label>
-          <input type="text" id="address" v-model="userData.address" class="form-control" placeholder=""
-            aria-describedby="addressText">
-          <small id="addressText" class="text-muted">Will not be shown to anyone unless a booking is accepted by both
-            parties.
-          </small>
+          <q-input type="text" id="address" v-model="user.address" float-label="address" :placeholder="user.address"
+            aria-describedby="addressText" />
         </div>
       </span>
       <button type="submit" class="btn btn-light">Submit</button>
     </form>
     <legend v-if="user.isHost" class="d-flex justify-content-center">My Pets</legend>
-
-    <q-tabs v-model="selectedPet">
-      <q-tab slot="title" label="New Pet"></q-tab>
-      <q-tab v-for="pet in pets" slot="title" @click="setPet(pet);  activePet = pet" :label="pet.name"></q-tab>
-      <span>
-        <q-tab @click="setPet(pet)" slot="title" :label="pet.name"></q-tab>
-      </span>
-    </q-tabs>
+    <span class="row">
+      <q-tabs class="col-10 offset-1" v-model="selectedPet">
+        <q-tab slot="title" label="New Pet"></q-tab>
+        <q-tab v-for="pet in pets" slot="title" @click="setPet(pet);  activePet = pet" :label="pet.name"></q-tab>
+        <span>
+          <q-tab @click="setPet(pet)" slot="title" :label="pet.name"></q-tab>
+        </span>
+      </q-tabs>
+    </span>
 
 
 
@@ -40,24 +36,20 @@
       <v-rating readonly v-model="reviewValue" color="yellow darken-3"></v-rating>
 
       <div class="form-group">
-        <label for="pet-name">Pet Name</label>
-        <input type="text" id="pet-name" class="form-control" v-model="petData.name" />
+        <q-input type="text" id="pet-name" v-model="petData.name" :placeholder="petData.name" float-label="Pet Name" />
       </div>
       <div class="form-group">
-        <label for="pet-type">Pet Type</label>
-        <input type="text" id="pet-type" class="form-control" v-model="petData.type" />
+        <q-input type="text" id="pet-type" v-model="petData.type" :placeholder="petData.type" float-label="Pet Type" />
       </div>
       <!-- <div class="form-group">
         <label for="pet-img">Pet Image</label>
         <input type="text" id="pet-image" class="form-control" v-model="petData.img" />
       </div> -->
       <div class="form-group">
-        <label for="pet-contact">Contact Information</label>
-        <input type="text" id="pet-contact" class="form-control" v-model="petData.cntct" />
+        <q-input type="text" id="pet-contact" v-model="petData.cntct" :placeholder="petData.cntct" float-label="Contact Information" />
       </div>
       <div class="form-group">
-        <label for="pet-notes">Notes/Special Needs</label>
-        <input type="text" id="pet-notes" class="form-control" v-model="petData.notes" />
+        <q-input type="text" id="pet-notes" v-model="petData.notes" :placeholder="petData.notes" float-label="Notes/Special Needs" />
       </div>
       <button type="submit" class="btn btn-primary">Add Pet</button>
     </form>
@@ -72,7 +64,7 @@
     <div v-for="(image, i) in images">
       <q-card>
         <q-card-media class="deleteIcon">
-          <i class="fa fa-laptop" @click="deleteImage(image._id, i)" aria-hidden="true" style="z-index: 2; position: absolute" />
+          <q-icon color="red" class="fa fa-minus-circle" @click="deleteImage(image._id, i)" style="z-index: 2; position: absolute" />
           <img class="uploadedImage" :src="image.file">
         </q-card-media>
       </q-card>

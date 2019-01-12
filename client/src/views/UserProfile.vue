@@ -69,11 +69,15 @@
         :max-size="customImageMaxSize" @size-exceeded="onSizeExceeded" @file="onFile" @load="onLoad" /><button @click="upLoad">Submit
         Photo</button>
     </div>
-    <div v-for="image in images">
-      <div class="card">
-        <img class="uploadedImage" :src="image.file">
-      </div>
+    <div v-for="(image, i) in images">
+      <q-card>
+        <q-card-media class="deleteIcon">
+          <i class="fa fa-laptop deleteIcon2" @click="deleteImage(image._id, i)" aria-hidden="true" />
+          <img class="uploadedImage" :src="image.file">
+        </q-card-media>
+      </q-card>
     </div>
+  </div>
   </div>
 
   </div>

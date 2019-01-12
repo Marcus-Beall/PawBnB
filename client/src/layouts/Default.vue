@@ -1,11 +1,10 @@
 <template>
   <q-layout view="lHh Lpr lff">
     <q-layout-header>
-      <q-toolbar color="primary" :glossy="$q.theme === 'mat'" :inverted="$q.theme === 'ios'">
+      <q-toolbar flat color="primary" :inverted="$q.theme === 'ios'">
         <q-btn flat @click="leftDrawerOpen = !leftDrawerOpen" aria-label="Menu" icon="menu" />
-
         <q-toolbar-title class="absolute-center">
-          P<i class="fas fa-paw"></i>wBnB
+          <router-link :to="{name: 'home'}" style="color:white">P<i class="fas fa-paw"></i>wBnB</router-link>
         </q-toolbar-title>
         <router-link v-if="user._id" :to="{name: 'home'}">
           <q-btn flat class="absolute-right" label="Logout" style="color:white" @click="logout" />
@@ -16,51 +15,29 @@
       </q-toolbar>
     </q-layout-header>
 
-    <q-layout-drawer v-model="leftDrawerOpen" :content-class="$q.theme === 'mat' ? 'bg-grey-2' : null">
-      <q-list v-if="user._id">
-        <q-list no-border link inset-delimiter>
-          <q-list no-border link inset-delimiter>
-            <q-list-header>Navigation</q-list-header>
-            <q-item to="/" exact>
-              <q-item-side icon="fas fa-paw" />
-              <q-item-main label="Home" />
-            </q-item>
-            <q-item to="/about">
-              <q-item-side icon="info_outline" />
-              <q-item-main label="About" />
-            </q-item>
-          </q-list>
-          <q-item-separator />
-          <q-item v-if="!user.isHost">
-            <router-link :to="{name: 'profile'}">Profile Page</router-link>
-          </q-item>
-          <q-item v-else>
-            <router-link :to="{name: 'host'}">Profile Page</router-link>
-          </q-item>
-
-          <q-item v-if="user.isHost">
-            <router-link :to="{name: 'bookings'}">
-              </router-link:to> Booking Requests</router-link>
-          </q-item>
-
-
-          <q-item v-if="!user.isHost">
-            <router-link :to="{name: 'host'}">Host a Dog</router-link>
-          </q-item>
-        </q-list>
-      </q-list>
-      <q-list v-else>
-        <q-item-separator />
-        <q-list-header>Navigation</q-list-header>
-        <q-item to="/" exact>
-          <q-item-side icon="fas fa-paw" />
-          <q-item-main label="Home" />
-        </q-item>
-        <q-item to="/about">
-          <q-item-side icon="info_outline" />
-          <q-item-main label="About" />
-        </q-item>
-      </q-list>
+    <q-layout-drawer style="color:white" color="primary" content-style="background-color:#e4ece1;" v-model="leftDrawerOpen"
+      :content-class="$q.theme === 'mat' ? 'bg-primary' : null">
+      <q-list-header style="color:white">Navigation</q-list-header>
+      <q-item to="/" exact>
+        <q-item-side style="color:white" icon="fas fa-paw" />
+        <q-item-main style="color:white" label="Home" />
+      </q-item>
+      <q-item to="/about">
+        <q-item-side style="color:white" icon="info_outline" />
+        <q-item-main style="color:white" label="About" />
+      </q-item>
+      <q-item v-if="!user.isHost">
+        <router-link style="color:white" :to="{name: 'profile'}">Profile Page</router-link>
+      </q-item>
+      <q-item v-else>
+        <router-link style="color:white" :to="{name: 'host'}">Profile Page</router-link>
+      </q-item>
+      <q-item v-if="!user.isHost">
+        <router-link style="color:white" :to="{name: 'host'}">Host a Dog</router-link>
+      </q-item>
+      <q-item v-if="user.isHost">
+        <router-link style="color:white" :to="{name: 'bookings'}">Booking Requests</router-link>
+      </q-item>
     </q-layout-drawer>
 
     <q-page-container>

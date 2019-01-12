@@ -108,6 +108,7 @@
 </script>
 
 <style>
-
-
+  .resultpage {
+    background-color: #e4ece1;
+  }
 </style>

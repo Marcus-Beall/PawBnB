@@ -26,17 +26,8 @@
         Photo</button>
     </div>
     <hr>
-    <div class="container-fluid">
-      <div class="row">
-        <div v-for="image in images">
-          <span class="card">
-            <img class="uploadedImage" :src="image.file">
-          </span>
-        </div>
-      </div>
-    </div>
 
-    <div v-for="(image, i) in images" v-show="false">
+    <div v-for="(image, i) in images">
       <q-card>
         <q-card-media class="deleteIcon">
           <i class="fa fa-laptop deleteIcon2" @click="deleteImage(image._id, i)" aria-hidden="true" />

@@ -26,17 +26,19 @@
         <q-item-side style="color:white" icon="info_outline" />
         <q-item-main style="color:white" label="About" />
       </q-item>
-      <q-item v-if="!user.isHost">
-        <router-link style="color:white" :to="{name: 'profile'}">Profile Page</router-link>
-      </q-item>
-      <q-item v-else>
-        <router-link style="color:white" :to="{name: 'host'}">Profile Page</router-link>
-      </q-item>
-      <q-item v-if="!user.isHost">
-        <router-link style="color:white" :to="{name: 'host'}">Host a Dog</router-link>
-      </q-item>
-      <q-item v-if="user.isHost">
-        <router-link style="color:white" :to="{name: 'bookings'}">Booking Requests</router-link>
+      <q-item v-if="user._id">
+        <q-item v-if="!user.isHost">
+          <router-link style="color:white" :to="{name: 'profile'}">Profile Page</router-link>
+        </q-item>
+        <q-item v-else>
+          <router-link style="color:white" :to="{name: 'host'}">Profile Page</router-link>
+        </q-item>
+        <q-item v-if="!user.isHost">
+          <router-link style="color:white" :to="{name: 'host'}">Host a Dog</router-link>
+        </q-item>
+        <q-item v-if="user.isHost">
+          <router-link style="color:white" :to="{name: 'bookings'}">Booking Requests</router-link>
+        </q-item>
       </q-item>
     </q-layout-drawer>
 

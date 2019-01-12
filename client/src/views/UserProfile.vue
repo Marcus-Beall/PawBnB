@@ -72,7 +72,7 @@
     <div v-for="(image, i) in images">
       <q-card>
         <q-card-media class="deleteIcon">
-          <i class="fa fa-laptop deleteIcon2" @click="deleteImage(image._id, i)" aria-hidden="true" />
+          <i class="fa fa-laptop" @click="deleteImage(image._id, i)" aria-hidden="true" style="z-index: 2; position: absolute" />
           <img class="uploadedImage" :src="image.file">
         </q-card-media>
       </q-card>

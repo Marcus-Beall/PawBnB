@@ -41,7 +41,7 @@
   @media(max-width:709px) {
     .home {
       background-image: url("https://images.unsplash.com/photo-1538131688925-7e0eb2e7828b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=932&q=80");
-      min-height: 100vh;
+      min-height: 89.5vh;
       /* width: 100vw; */
       text-align: center;
     }

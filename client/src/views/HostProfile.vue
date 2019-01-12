@@ -29,7 +29,7 @@
     <div v-for="(image, i) in images">
       <q-card>
         <q-card-media class="deleteIcon">
-          <q-icon color="red" class="fa fa-minus-circle" @click="deleteImage(image._id, i)" style="z-index: 2; position: absolute" />
+          <i aria-hidden="true" class="q-icon fa fa-minus-circle" @click="deleteImage(image._id, i)" style="color: tomato; z-index: 2; position: absolute;" />
           <img class="uploadedImage" :src="image.file">
         </q-card-media>
       </q-card>
@@ -187,5 +187,9 @@
 
   .uploadedImage {
     max-width: 200px;
+  }
+
+  .host {
+    background-color: #e4ece1;
   }
 </style>

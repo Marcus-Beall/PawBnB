@@ -15,8 +15,7 @@
       </q-toolbar>
     </q-layout-header>
 
-    <q-layout-drawer style="color:white" color="primary" content-style="background-color:#e4ece1;" v-model="leftDrawerOpen"
-      :content-class="$q.theme === 'mat' ? 'bg-primary' : null">
+    <q-layout-drawer style="color:white" color="primary" v-model="leftDrawerOpen" :content-class="$q.theme === 'mat' ? 'bg-primary' : null">
       <q-list-header style="color:white">Navigation</q-list-header>
       <q-item to="/" exact>
         <q-item-side style="color:white" icon="fas fa-paw" />

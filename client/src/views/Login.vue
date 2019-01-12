@@ -1,8 +1,8 @@
 <template>
-  <div class="login">
+  <div class="login absolute-center">
     <form v-if="loginForm" @submit.prevent="login">
+      <legend>Login or Register</legend>
       <fieldset>
-        <legend>Login</legend>
         <div class="form-group">
           <label for="email">Email address</label>
           <input type="email" v-model="user.email" class="form-control" id="email">
@@ -12,7 +12,7 @@
           <input type="password" v-model="user.password" class="form-control" id="password">
         </div>
       </fieldset>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary">Login</button>
       <button class="btn btn-primary" type="button" @click="loginForm = !loginForm">Register</button>
     </form>
     <form v-else @submit.prevent="register">
@@ -76,6 +76,13 @@
 </script>
 
 <style>
+  button {
+    min-width: 20vw;
+    max-width: 20vw;
+  }
 
-
+  input {
+    min-width: 51ch;
+    max-width: 51ch;
+  }
 </style>

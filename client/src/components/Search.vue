@@ -13,7 +13,7 @@
           <input v-model="query.startmonth" class="form-control " id="start-month" name="start-month" placeholder="MM"
             type="number" />
           <input v-model="query.startday" class="form-control " id="start-day" name="start-day" placeholder="DD" type="number" />
-          <input class="form-control " id="start-year" name="start-year" placeholder="YY" type="number" />
+          <input class="form-control " id="start-year" name="start-year" placeholder="YYYY" type="number" />
           <label class="control-label" for="date">To</label>
           <input v-model="query.endmonth" class="form-control " id="end-month" name="end-month" placeholder="MM" type="number" />
           <input v-model="query.endday" class="form-control " id="end-day" name="end-day" placeholder="DD" type="number" />

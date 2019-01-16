@@ -39,6 +39,14 @@
           <router-link style="color:white" :to="{name: 'bookings'}">Booking Requests</router-link>
         </q-item>
       </q-item>
+      <q-list highlight>
+        <q-list-header>Recent chats</q-list-header>
+        <q-item v-for="chat in chats">
+          <q-item-side avatar="statics/linux-avatar.png" />
+          <q-item-main :label="Jim Doe" />
+          <q-item-side right icon="chat_bubble" />
+        </q-item>
+      </q-list>
     </q-layout-drawer>
 
     <q-page-container>
@@ -66,18 +74,28 @@
     name: 'LayoutDefault',
     data() {
       return {
-        leftDrawerOpen: this.$q.platform.is.desktop
+        leftDrawerOpen: this.$q.platform.is.desktop,
+        chatName: this.chats.
       }
     },
     computed: {
       user() {
         return this.$store.state.user
+      },
+      chats() {
+        return this.$store.state.user.chats
       }
     },
     methods: {
       openURL,
       logout() {
         this.$store.dispatch('logout')
+      },
+      send() {
+        this.$store.dispatch('sendMessage', { user: this.user.name, userId: this.user._id, message: this.message })
+      },
+      getChatName(user) {
+
       }
     }
   }

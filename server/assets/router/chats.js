@@ -11,11 +11,10 @@ class Socket {
 
     io.on("connection", socket => {
       console.log("User Connected");
-
       socket.emit("CONNECTED", {
         socket: socket.id,
         message: "Successfully Connected",
-        currentChats: Object.keys(chats)
+        chats: socket.user.chats
       })
 
       //CONNECT TO CHATS

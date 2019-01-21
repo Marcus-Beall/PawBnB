@@ -43,7 +43,7 @@
         <q-list-header>Recent chats</q-list-header>
         <q-item v-for="chat in chats">
           <q-item-side avatar="statics/linux-avatar.png" />
-          <q-item-main :label="Jim Doe" />
+          <q-item-main label="Jim Doe" />
           <q-item-side right icon="chat_bubble" />
         </q-item>
       </q-list>
@@ -74,8 +74,8 @@
     name: 'LayoutDefault',
     data() {
       return {
-        leftDrawerOpen: this.$q.platform.is.desktop,
-        chatName: this.chats.
+        leftDrawerOpen: false,
+        chatName: this.chats
       }
     },
     computed: {

@@ -25,7 +25,7 @@
                 <q-datetime icon="fas fa-calendar-alt" type="date" v-model="query.end" color="primary" />
               </q-item-side>
             </q-item>
-            <q-btn color="primary" type="submit" label="Search" />
+            <q-btn push class="justify-content-center row" color="primary" type="submit">Search</q-btn>
           </div>
         </form>
       </q-card-main>
@@ -78,5 +78,10 @@
   button.q-btn {
     vertical-align: 0;
     min-width: 100px;
+    outline: none;
+  }
+
+  .q-datetime {
+    font-family: 'Coming Soon', cursive;
   }
 </style>

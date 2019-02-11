@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import Axios from 'axios'
 import router from './router'
+// @ts-ignore
+import { date } from 'quasar'
 
 Vue.use(Vuex)
 let baseURL = "//localhost:3000/"
@@ -64,9 +66,13 @@ export default new Vuex.Store({
     },
 
     queryResults(state, query) {
+      let startDate = date.formatDate(query.start, 'M-DD')
+      let endDate = date.formatDate(query.end, 'M-DD')
+      let startDates = startDate.split("-")
+      let endDates = endDate.split("-")
+      let start = parseInt(startDates[1]) * parseInt(startDates[0]) + (30 * (startDates[0] - 1))
+      let end = parseInt(endDates[1]) * parseInt(endDates[0]) + (30 * (endDates[0] - 1))
       state.query = []
-      let start = parseInt(query.startday) * parseInt(query.startmonth) + (30 * (query.startmonth - 1))
-      let end = parseInt(query.endday) * parseInt(query.endmonth) + (30 * (query.endmonth - 1))
       for (let i = start; i <= end; i++) {
         state.query.push(i);
       }

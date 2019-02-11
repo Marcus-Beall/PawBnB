@@ -1,5 +1,6 @@
 let router = require('express').Router()
 let Chats = require('../models/chat')
+let Users = require('../models/user')
 
 class Socket {
   constructor(io) {
@@ -10,19 +11,18 @@ class Socket {
 
     io.on("connection", socket => {
       console.log("User Connected");
-
       socket.emit("CONNECTED", {
         socket: socket.id,
         message: "Successfully Connected",
-        currentChats: Object.keys(chats)
+        chats: socket.user.chats
       })
 
       //CONNECT TO CHATS
       socket.on("join", data => {
-        if (data.name, data.room) {
-          socket.user = data.name;
+        if (data.id, data.room) {
+          socket.user = data.id;
           socket.join(data.room);
-          connectedUsers[data.name] = data.name;
+          connectedUsers[data.id] = data.id;
           socket.emit({
             chat: data.room,
             connectedUsers: connectedUsers
@@ -45,10 +45,25 @@ class Socket {
       })
 
       socket.on('message', data => {
-        if (data.message && data.user) {
+        if (data.message && data.id) {
           io.to(data.chat).emit('newMessage', data)
           // @ts-ignore
-          router.post()
+          router.post((req, res, next) => {
+            let message = {
+              userId: data.id,
+              name: data.name,
+              message: data.message
+            }
+            Chats.findById(data.chat)
+              .then(chat => {
+                chat.messages.push(message)
+                chat.save(err => {
+                  if (err) {
+                    next(err)
+                  }
+                })
+              })
+          })
         }
       })
     })

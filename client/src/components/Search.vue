@@ -1,27 +1,35 @@
 <template>
   <div class="search col-3 offset-1">
-    <div class="card form">
-      <div class="card-header">
+    <q-card flat inline style="min-width: 500px">
+      <q-card-title>
         <h4>Plan your pooch's stay!</h4>
-      </div>
-      <form class="px-2" @submit.prevent="search">
-        <div class="form-group ">
-          <label class="control-label" for="search">Search for Hosts</label>
-          <input v-model="query.zipcode" type="text" placeholder="Enter zipcode..." name="search" class="form-control "
-            id="search" autofocus />
-          <label class="control-label" for="date">From</label>
-          <input v-model="query.startmonth" class="form-control " id="start-month" name="start-month" placeholder="MM"
-            type="number" />
-          <input v-model="query.startday" class="form-control " id="start-day" name="start-day" placeholder="DD" type="number" />
-          <input class="form-control " id="start-year" name="start-year" placeholder="YYYY" type="number" />
-          <label class="control-label" for="date">To</label>
-          <input v-model="query.endmonth" class="form-control " id="end-month" name="end-month" placeholder="MM" type="number" />
-          <input v-model="query.endday" class="form-control " id="end-day" name="end-day" placeholder="DD" type="number" />
-          <input class="form-control " id="end-year" name="end-year" placeholder="YYYY" type="number" />
-          <q-btn class="search-button" color="primary" type="submit" name="submit">Search</q-btn>
-        </div>
-      </form>
-    </div>
+      </q-card-title>
+      <q-card-main>
+        <form class="px-2" @submit.prevent="search">
+          <div class="form-group ">
+            <label class="control-label" for="search">Search for Hosts</label>
+            <q-input v-model="query.zipcode" type="text" name="search" id="search" autofocus float-label="Zipcode" />
+            <q-item tag="label">
+              <q-item-main>
+                <q-item-tile label>Start Date</q-item-tile>
+              </q-item-main>
+              <q-item-side right>
+                <q-datetime icon="fas fa-calendar-alt" type="date" v-model="query.start" color="primary" />
+              </q-item-side>
+            </q-item>
+            <q-item tag="label">
+              <q-item-main>
+                <q-item-tile label>End Date</q-item-tile>
+              </q-item-main>
+              <q-item-side right>
+                <q-datetime icon="fas fa-calendar-alt" type="date" v-model="query.end" color="primary" />
+              </q-item-side>
+            </q-item>
+            <q-btn push class="justify-content-center row" color="primary" type="submit">Search</q-btn>
+          </div>
+        </form>
+      </q-card-main>
+    </q-card>
   </div>
 </template>
 
@@ -32,10 +40,8 @@
       return {
         query: {
           zipcode: "",
-          startmonth: "",
-          startday: "",
-          endmonth: "",
-          endday: ""
+          start: new Date(),
+          end: new Date()
         }
       }
     },
@@ -72,6 +78,10 @@
   button.q-btn {
     vertical-align: 0;
     min-width: 100px;
+    outline: none;
   }
 
+  .q-datetime {
+    font-family: 'Coming Soon', cursive;
+  }
 </style>

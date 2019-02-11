@@ -3,8 +3,6 @@
     <div class="container">
       <div class="row">
         <result v-if="available(result)" v-for="result in results" :reviews="result.reviews" :result="result">Boop</result>
-        <div class="col-3">
-        </div>
       </div>
     </div>
   </div>
@@ -49,5 +47,10 @@
 <style>
   .resultname {
     height: 100px;
+  }
+
+  .results {
+    background-color: #e4ece1;
+    height: 100vh;
   }
 </style>

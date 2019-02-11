@@ -5,13 +5,13 @@ let schemaName = 'Chat'
 
 let messageSchema = new Schema({
   userId: { type: ObjectId, ref: 'User', required: true },
+  name: { type: String, required: true },
   message: { type: String, required: true }
 })
 
 let schema = new Schema({
   messages: [messageSchema],
-  userId: { type: ObjectId, ref: 'User', required: true },
-  hostId: { type: ObjectId, ref: 'User', required: true },
+  name: { type: String, required: true },
   notes: { type: String, maxlength: 20 }
 })
 
